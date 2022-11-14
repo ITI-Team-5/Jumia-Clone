@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from'rxjs';
+import { data } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -62,9 +63,7 @@ addUser(newUser:any){
 userLogin(newUser:any){
   return this.myClient.post(this.login,newUser)
 }
-// userLogout( httpOptions:any ){
-//   return this.myClient.delete(this.logout, httpOptions)  //-------------->>>>>>> >> a3mel eh 
-// }
+
 getAllUsers(){
   return this.myClient.get(this.signup)
 }
@@ -90,6 +89,30 @@ UpdateProfile(updatePro:any,id:any){
 DeleteOrd(id:number){
   return this.myClient.delete(`${this.profile}/${id}`)
 }
+
 cartSubject = new Subject<any>();
 
+
+// CartItemFun(){
+//   var CartCount = JSON.parse(localStorage.getItem('cart')) //------->>>>>> 3dd kol al products .length 
+//   // var itemCount = CartCount['0'].quanity; 
+  
+//   // console.log(itemCount);// ------->>>>>>> kam montg mn nafs alproduct 
+//   if(localStorage.getItem('cart')){
+//     // for()
+//     for(let i =0; i < CartCount.length ; i++){
+//       // CartCount[i].quanity 
+//        this.totalCount += CartCount[i].quanity
+
+//       // itemCount[i];
+//     }
+//       // console.log(this.totalCount);
+//     // this.cartItem = CartCount.length;
+//   }
+//    let final = JSON.parse(this.totalCount.toString());
+//   return final;
+// }
+
 }
+
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { data } from 'jquery';
 import { HttpHeaders } from '@angular/common/http';
@@ -13,13 +13,12 @@ isLoggedIn: any;
 LoggedInAdmin:any;
 flag = false;
 name:any;
-cartItem: any = 0;
+cartItem: any ;
 
-  constructor(private _route:Router, public myService: ServicesService ) { 
-      this.myService.cartSubject.subscribe((data)=>{
-        this.cartItem = data;
-      })
-     
+  constructor( public myservice: ServicesService ,private route: ActivatedRoute ) { 
+    this.myservice.cartSubject.subscribe((data)=>{
+      this.cartItem = data;
+    })
     }
 
   ngOnInit(): void {
@@ -32,10 +31,9 @@ cartItem: any = 0;
     if(!this.LoggedInAdmin){
         window.location.href = '/';
     }
+     
+    this.CartItemFun()
    
-   
-   
-    this.CartItemFun();
   }
 
   logout(){
@@ -47,18 +45,26 @@ cartItem: any = 0;
     localStorage.removeItem("name");
     window.location.href= "/login"
   } 
+ 
 
   CartItemFun(){
-    var CartCount = JSON.parse(localStorage.getItem('cart')) //------->>>>>> 3dd kol al products .length 
-    var itemCount = CartCount['0'].quanity; 
-    console.log(itemCount);// ------->>>>>>> kam montg mn nafs alproduct 
+    var CartCount = JSON.parse(localStorage.getItem('cart')) 
+    var totalCount = 0;
     if(localStorage.getItem('cart')){
-      // for()
-        
-      // this.cartItem = CartCount.length;
+      for(let i =0; i < CartCount.length ; i++){
+         totalCount += CartCount[i].quanity
+      }
+      
+        console.log(totalCount);
+        this.cartItem = totalCount;
     }
+    this.myservice.cartSubject.next(this.cartItem);
   }
+
+  
 }
 
  
+
+
 

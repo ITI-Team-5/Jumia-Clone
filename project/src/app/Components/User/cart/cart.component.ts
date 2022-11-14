@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
@@ -11,10 +11,16 @@ export class CartComponent implements OnInit {
 
   productsInCart:any[]=[]
   total:any=0;
+
   imgsrc= 'http://localhost:8000/storage/images';
   LoggedInAdmin: any;
-  cartNum:any=0;
-  constructor(private myservice:ServicesService,private _route:Router) { }
+
+  cartItem:any;
+  constructor(public myservice: ServicesService ,private route: ActivatedRoute) {
+    this.myservice.cartSubject.subscribe((data)=>{
+      this.cartItem = data;
+    })
+   }
 
   ngOnInit(): void {
   
@@ -24,9 +30,12 @@ export class CartComponent implements OnInit {
      
      }
 
-
+    // this.CartItemFun(this.cartNum)
+  
     this.listItemstocart()
     this.getTotal()
+    // this.getcountdata()
+    
   }
 
   listItemstocart()
@@ -62,7 +71,8 @@ export class CartComponent implements OnInit {
     {
       this.productsInCart[ind].quanity =1;
     }
-    // this.CartItemFun(this.productsInCart[ind].quanity-1);
+    localStorage.setItem("cart",JSON.stringify(this.productsInCart));
+    this.CartItemFun(this.cartItem - 1);
     this.getTotal()
    
 
@@ -73,6 +83,7 @@ export class CartComponent implements OnInit {
     this.getTotal()
     localStorage.setItem("cart",JSON.stringify(this.productsInCart));
     // this.CartItemFun(this.productsInCart[ind].quanity-1);
+    this.CartItemFun(this.cartItem - 1);
   }
 
   deleteItem(index:any)
@@ -81,7 +92,8 @@ export class CartComponent implements OnInit {
     this.getTotal()
   
     localStorage.setItem("cart",JSON.stringify(this.productsInCart))
-    // this.CartItemFun(this.productsInCart[index] -1);
+    // this.CartItemFun(this.productsInCart[index].quanity-1 );
+    this.CartItemFun(this.cartItem - 1);
   }
 
   clearCart()
@@ -89,8 +101,8 @@ export class CartComponent implements OnInit {
     this.productsInCart=[];
     this.getTotal()
     localStorage.setItem("cart",JSON.stringify(this.productsInCart))
-    this.cartNum=0;
-    this.myservice.cartSubject.next(this.cartNum);
+    this.cartItem=0;
+    this.myservice.cartSubject.next(this.cartItem);
     
 
   }
@@ -108,14 +120,13 @@ export class CartComponent implements OnInit {
   
       let finalData=
       {
-        // user_id:sessionStorage.getItem('user_id'),
+        
         user_id:localStorage.getItem('UserId'),
-        // date: new Date(),
+      
          order:order,
         finaltotal:this.total
       }
-      // localStorage.setItem("checkout",JSON.stringify(finalData));
-        // insert into tables
+      
         this.myservice.insertOrder(finalData).subscribe(
           (data:any)=>{
             
@@ -130,13 +141,18 @@ export class CartComponent implements OnInit {
    
   }
   
-//   CartItemFun(qty:any){
-    
-//     var CartValue = JSON.parse(localStorage.getItem('cart')) ;
-    
-//     this.cartNum = CartValue.length + qty;
-//     this.myservice.cartSubject.next(this.cartNum);
-//   //  console.log(this.cartNum);
-// }
   
+CartItemFun(qty:any){
+  var CartCount = JSON.parse(localStorage.getItem('cart')) 
+  var totalCount = 0;
+  if(localStorage.getItem('cart')){
+    for(let i = 0; i < CartCount.length ; i++){
+       totalCount += CartCount[i].quanity
+    }
+    
+      console.log(totalCount);
+      this.cartItem = totalCount;
+  }
+  this.myservice.cartSubject.next(this.cartItem);
+}
 }
