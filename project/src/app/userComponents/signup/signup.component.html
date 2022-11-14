@@ -1,0 +1,60 @@
+<section class="bg-light d-flex justify-content-center align-items-center">
+      <div class="card custom-card mt-2 mb-5">
+        <div class="text-center">
+          <h1>Sign Up</h1>
+          <h6>Register Yourself!</h6>
+        </div>
+          <form [formGroup]="AddUserForm" (ngSubmit)="addUser()">
+            <div class="mb-2">
+              <label for="exampleInputName1" class="form-label">Your Name</label>
+              <input formControlName="name" type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp">
+              <div *ngIf="!namevalidation" id="emailHelp" class="form-text">
+                <p class="alert alert-danger">* Name Required and more than  3 characters</p>
+              </div>
+            </div>
+            
+            <div class="mb-2">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input formControlName="email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div *ngIf="!emailvalidation" id="emailHelp" class="form-text">
+                <p class="alert alert-danger">* email should contains @ .com</p>
+              </div>
+            </div>
+            
+            <div class="mb-2 position-relative">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input formControlName="password" [type]="changetype?'password':'text'" class="form-control" id="exampleInputPassword1">
+              <span class="eye-icon" (click)="showpassword()" style="color:black; position:absolute;right:15px;top:50px;z-index: 10">
+                <i style="cursor:pointer;"  [ngClass]="visible?'fa fa-eye': 'fa fa-eye-slash'"></i>
+                </span>
+              <div *ngIf="!passwordvalidation" id="emailHelp" class="form-text">
+                <p class="alert alert-danger mt-3">* password should contain special charchters and capital letters,numbers and not empty</p>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">phone</label>
+              <input formControlName="phone" type="phone" class="form-control" id="exampleInputPassword1">
+              <div *ngIf="!phonevalidation" id="emailHelp" class="form-text">
+                <p class="alert alert-danger">* phone required</p>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">address</label>
+              <input formControlName="address" type="address" class="form-control" id="exampleInputPassword1">
+              <div *ngIf="!addressvalidation" id="emailHelp" class="form-text">
+                <p class="alert alert-danger">* address required</p>
+              </div>
+            </div>
+            <div class="mb-2">
+              <input class="form-check-input mt-2" type="checkbox" formControlName="accept" id="">
+              <label for="male" class="form-label mx-2">Accept privacy & policies</label>
+              <div *ngIf="!acceptvalidation" id="emailHelp" class="form-text">
+                <p class="alert alert-danger">* you must accept the privacy and polices</p>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-danger">Sign Up</button>
+          </form>
+          <a routerLink="/login"> Already registered...click to login</a>
+      </div>
+</section>
+

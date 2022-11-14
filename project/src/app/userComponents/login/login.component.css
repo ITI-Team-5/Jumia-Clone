@@ -1,0 +1,36 @@
+*{
+  /* margin: 0; */
+  /* padding:0; */
+  box-sizing: border-box;
+
+}
+
+.custom-card{
+  border: none;
+  width: 500px;
+  padding: 40px;
+  /* margin:auto; */
+  background: hsla(205, 46%, 30%, 1);
+  background: linear-gradient(90deg,hsla(205, 46%, 30%, 1) 0% , hsla(260,29%,36%,1) 100%);
+}
+label{
+  font-size:17px;
+  padding:5px;
+}
+/* input{
+  height: 35px;
+} */
+.custom-card label, h1 ,h6{
+  color: #fff;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a
+{
+  color: rgba(240, 162, 16, 0.988);
+  text-decoration: none;
+  position: relative;
+  top: 15px;
+}
+a:hover{
+  color: rgba(189, 139, 46, 0.988);
+}
