@@ -1,0 +1,38 @@
+<app-header></app-header>
+<section class="bg-light d-flex justify-content-center align-items-center">
+  <div class="card custom-card mt-3">
+    <div class="text-center">
+      <h2 class="text-center text-warning mb-1">Add Product</h2>
+    </div>
+<form [formGroup]="form" (ngSubmit)="Updatepro()" >
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">title:</label>
+    <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">SKU:</label>
+    <input  formControlName="SKU"  type="text" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 row">
+    <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+    <label class="form-label">image: </label>
+    <input  type="file" style="height:100px" class="form-control" (change)="uploadFile($event)" />
+  </div>
+    <div class="col-xl-4 col-lg-4 col-md-12 col-12 rounded"><img class="img-fluid img-thumbnail" src="{{imgsrc}}/{{myimage}}" alt="{{myimage}}"></div>
+
+  </div>
+  <div class="mb-3">
+    <label class="form-label">price: </label>
+    <input formControlName="price" type="text" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">details: </label>
+    <input formControlName="details" type="text" class="form-control" />
+  </div>
+  <div class="form-group d-flex justify-content-center ">
+    <input type="submit" class="w-50 btn btn-outline-warning" value="Update" />
+  </div>
+
+</form>
+</div>
+</section>

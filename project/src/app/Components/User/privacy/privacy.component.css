@@ -1,0 +1,38 @@
+.head1
+{
+    text-align: center;
+    color: #f49719;
+    font-size: 30px;
+    font-weight: 400;
+}
+.contents{
+    font-size: 19px;
+    color: #f49719;
+}
+.custom_box
+{
+    background-color: rgba(230, 228, 228, 0.592);
+}
+.custom-ul li a{
+    color:#000;
+    font-weight: 400;
+}
+.custom-ul li a:hover{
+    color: #f49719;
+}
+.txt{
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    padding: 0 22px;
+}
+.custom_checkbox{
+    width: 15px;
+    height: 15px;
+    border: 2px solid #808080;
+    position: relative;
+    top: 4px;
+}
+.txt_pr{
+    font-weight: 500;
+}

@@ -1,0 +1,48 @@
+.breadcrumb{
+    background:linear-gradient(to right ,
+    rgba(255,0,0,0.8),rgb(0,0,0,0.5),rgba(0,0,0,1))
+}
+.teamss{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:100px;
+}
+.teamss img{
+    border-radius:50%;
+    width:300px;
+    height:300px;
+    border:1px solid red;
+}
+.teamss h3{
+    text-align:center;
+    margin-top:20px;
+}
+.teamss p{
+    text-align:center;
+    margin-top:20px;
+}
+.teamsss{
+    display: flex;
+    margin-top:50px;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.teamsss img{
+    border-radius:50%;
+    width:300px;
+    height:300px;
+    border:1px solid red;
+}
+.teamsss h3{
+    text-align:center;
+    margin-top:20px;
+}
+.teamsss p{
+    text-align:center;
+    margin-top:20px;
+}
