@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ServicesService } from '../../Admin/Services/services.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ServicesService } from '../../Admin/Services/services.service';
+
 @Component({
-  selector: 'app-discount-slider',
-  templateUrl: './discount-slider.component.html',
-  styleUrls: ['./discount-slider.component.css']
+  selector: 'app-latest',
+  templateUrl: './latest.component.html',
+  styleUrls: ['./latest.component.css']
 })
-export class DiscountSliderComponent implements OnInit {
+export class LatestComponent implements OnInit {
+
   constructor(private myserv:ServicesService) { }
   products:any;
-  discount:any=[];
   imgsrc:any;
   ngOnInit(): void {
     this.getdata();
@@ -17,16 +18,11 @@ export class DiscountSliderComponent implements OnInit {
   }
   getdata()
   {
-    let obj = this.products;
     this.myserv.getAllProducts(this.products).subscribe((response:any)=>{
-      this.products = response.data;
+      this.products = response.data.slice(1,4);
       this.imgsrc= 'http://localhost:8000/storage/images';
-      for(let j=0;j<this.products.length;j++){
-        if(this.products[j].discount){
-        this.discount.push(this.products[j])
-        console.log(this.discount)
-        }
-         }
+     
+     // console.log(this.products.slice(1,3))
     })
   }
   customOptions: OwlOptions = {

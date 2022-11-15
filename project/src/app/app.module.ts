@@ -30,6 +30,7 @@ import { ContactComponent } from './Components/User/contact/contact.component';
 import { FooterComponent } from './Components/User/footer/footer.component';
 import { SortPipe } from './Components/User/pipes/sort.pipe';
 import { DiscountSliderComponent } from './Components/User/discount-slider/discount-slider.component';
+import { LatestComponent } from './Components/User/latest/latest.component';
 
 
 
@@ -58,7 +59,7 @@ import { DiscountSliderComponent } from './Components/User/discount-slider/disco
     FooterComponent,
     SortPipe,
     DiscountSliderComponent,
-    
+    LatestComponent,
     
     
     

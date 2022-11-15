@@ -1,5 +1,5 @@
-  <owl-carousel-o [options]="customOptions">
-    <ng-template *ngFor="let p of discount"  carouselSlide>
+<owl-carousel-o [options]="customOptions">
+    <ng-template *ngFor="let p of products"  carouselSlide>
         <a routerLink="product/{{p.id}}"> <img width="200" height="200" src="{{imgsrc}}/{{p.image}}" alt="">
             </a>
         <h5 style="text-align:left;text-transform:capitalize">{{p.title}}</h5>

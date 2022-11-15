@@ -34,3 +34,7 @@ a
 a:hover{
   color: rgba(189, 139, 46, 0.988);
 }
+.btn-google{
+  top:0;
+  margin-left:10px;
+}
