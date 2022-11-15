@@ -17,11 +17,16 @@ import { CheckoutComponent } from './Components/User/checkout/checkout.component
 import { AboutComponent } from './Components/User/about/about.component';
 import { ContactComponent } from './Components/User/contact/contact.component';
 import { PrivacyComponent } from './Components/User/privacy/privacy.component';
+import { PolicyComponent } from './Components/User/policy/policy.component';
 
 const routes: Routes = [
   {
     path:"",
     component:HomeComponent
+  },
+  {
+    path:"policy",
+    component:PolicyComponent
   },
   {
     path:"cart",
@@ -83,10 +88,7 @@ const routes: Routes = [
       path:"profiles/edit/:id",
       component:EditProfileComponent
     },
-    {
-      path:"privacy",
-      component:PrivacyComponent
-    },
+   
   {
     path:"**",
     component:ErrorComponent

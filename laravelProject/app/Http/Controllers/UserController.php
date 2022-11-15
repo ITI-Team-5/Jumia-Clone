@@ -19,7 +19,7 @@ class UserController extends Controller
         $newUser = User::create([
             'name' => request()->name,
             'email' => request()->email,
-            'password' =>  request()->password,
+            'password' => request()->password ,
             'phone' =>  request()->phone,
             'address' =>  request()->address,
         ]);

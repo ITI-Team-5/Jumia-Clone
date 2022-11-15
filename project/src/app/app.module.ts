@@ -31,6 +31,7 @@ import { FooterComponent } from './Components/User/footer/footer.component';
 import { SortPipe } from './Components/User/pipes/sort.pipe';
 import { PrivacyComponent } from './Components/User/privacy/privacy.component';
 import { OffersComponent } from './Components/User/offers/offers.component';
+import { PolicyComponent } from './Components/User/policy/policy.component';
 
 
 
@@ -60,6 +61,7 @@ import { OffersComponent } from './Components/User/offers/offers.component';
     SortPipe,
     PrivacyComponent,
     OffersComponent,
+    PolicyComponent,
     
     
     
