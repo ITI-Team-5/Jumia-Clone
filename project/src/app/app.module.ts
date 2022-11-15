@@ -10,7 +10,7 @@ import { ServicesService } from './Components/Admin/Services/services.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductsComponent } from './Components/Admin/update-products/update-products.component';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeComponent } from './Components/User/home/home.component';
 import { CartComponent } from './Components/User/cart/cart.component';
 import { ProductDetailsComponent } from './Components/User/product-details/product-details.component';
@@ -29,6 +29,7 @@ import { AboutComponent } from './Components/User/about/about.component';
 import { ContactComponent } from './Components/User/contact/contact.component';
 import { FooterComponent } from './Components/User/footer/footer.component';
 import { SortPipe } from './Components/User/pipes/sort.pipe';
+import { DiscountSliderComponent } from './Components/User/discount-slider/discount-slider.component';
 
 
 
@@ -56,6 +57,7 @@ import { SortPipe } from './Components/User/pipes/sort.pipe';
     ContactComponent,
     FooterComponent,
     SortPipe,
+    DiscountSliderComponent,
     
     
     
@@ -68,7 +70,7 @@ import { SortPipe } from './Components/User/pipes/sort.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    
+    CarouselModule,
   
   ],
   providers: [

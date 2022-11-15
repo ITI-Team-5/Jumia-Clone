@@ -23,6 +23,9 @@ class ProductController extends Controller
         return Product::find($productId); // Check this later
 
     }
+    public function slider(){
+        
+    }
 
     public function store(ProductsRequest $request)
     {

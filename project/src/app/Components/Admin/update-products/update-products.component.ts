@@ -101,6 +101,7 @@ export class UpdateProductsComponent implements OnInit {
     formData.append('SKU', this.form.controls['SKU'].value);
     formData.append('details', this.form.controls['details'].value);
     formData.append('price', this.form.controls['price'].value);
+    formData.append('discount', this.form.controls['discount'].value);
     formData.append('_METHOD', 'PUT');
 
     console.log(formData);
