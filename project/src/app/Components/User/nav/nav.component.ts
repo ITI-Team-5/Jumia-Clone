@@ -19,21 +19,15 @@ name:any;
     this.LoggedInAdmin = localStorage.getItem("userType")
     this.isLoggedIn = localStorage.getItem("token");
     this.name = localStorage.getItem("name");
-    if(this.LoggedInAdmin == 'admin'){
-      this.flag = true; //admin 
-    }
-    if(!this.LoggedInAdmin){
-        window.location.href = '/';
-    }
+   
   }
 
   logout(){
   
     localStorage.removeItem("token");
-    localStorage.removeItem("UserId");
-    localStorage.removeItem("adminId");
-    localStorage.removeItem("userType");
+    localStorage.removeItem("role");
     localStorage.removeItem("name");
+    localStorage.removeItem("UserId");
     window.location.href= "/login"
   } 
 

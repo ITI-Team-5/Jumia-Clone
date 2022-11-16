@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   visible:boolean = true;
   changetype:boolean = true;
   constructor(
-              public fb:FormBuilder , private _route:Router ,
+              public fb:FormBuilder , private router:Router ,
               public myService: ServicesService 
             )
       {
@@ -38,10 +38,13 @@ export class SignupComponent implements OnInit {
   this.changetype = !this.changetype
   }
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("UserId")
-    if(this.LoggedInAdmin){
-        window.location.href = '/admin';
+    // this.LoggedInAdmin = localStorage.getItem("UserId")
+    // if(this.LoggedInAdmin){
+    //     window.location.href = '/admin';
     
+    // }
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/']);
     }
    
   }

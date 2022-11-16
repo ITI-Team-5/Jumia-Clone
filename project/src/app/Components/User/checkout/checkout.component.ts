@@ -12,13 +12,13 @@ export class CheckoutComponent implements OnInit {
   
   constructor(private myservice:ServicesService,activatedroute:ActivatedRoute) { }
   profile:any;
-  id = localStorage.getItem('UserId') ;
+  id = localStorage.getItem('token') ;
   orders:any[]=[];
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("userType")
-    if(this.LoggedInAdmin != 'user'){
-        window.location.href = '/admin';
-    }
+    // this.LoggedInAdmin = localStorage.getItem("userType")
+    // if(this.LoggedInAdmin != 'user'){
+    //     window.location.href = '/admin';
+    // }
     this.myservice.getByProfileId(this.id).subscribe((data)=>{
       this.profile = data;
      // console.log(data);

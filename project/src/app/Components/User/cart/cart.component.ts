@@ -24,11 +24,11 @@ export class CartComponent implements OnInit {
     //   alert("please logged in ....");
     //   window.location.href = "/login";
     // }
-    this.LoggedInAdmin = localStorage.getItem("userType")
-     if(this.LoggedInAdmin != 'user'){
-         window.location.href = '/admin';
+    // this.LoggedInAdmin = localStorage.getItem("userType")
+    //  if(this.LoggedInAdmin != 'user'){
+    //      window.location.href = '/admin';
      
-     }
+    //  }
 
 
     this.listItemstocart()
@@ -113,7 +113,7 @@ export class CartComponent implements OnInit {
       let finalData=
       {
         // user_id:sessionStorage.getItem('user_id'),
-        user_id:localStorage.getItem('UserId'),
+        user_id:localStorage.getItem('token'),
         // date: new Date(),
          order:order,
         finaltotal:this.total

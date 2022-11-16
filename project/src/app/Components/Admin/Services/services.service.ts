@@ -15,7 +15,11 @@ private signup  = "http://localhost:8000/api/signup"
 private login  = "http://localhost:8000/api/login"
 private logout  = "http://localhost:8000/api/logout"
 private profile  = "http://localhost:8000/api/profiles"
+private discount = "http://localhost:8000/api/products/discounts"
 
+getDiscounts(){
+  return this.myClient.get(this.discount);
+}
 getAllOrders(){
   return this.myClient.get(this.orders)
 }
@@ -89,5 +93,15 @@ UpdateProfile(updatePro:any,id:any){
 DeleteOrd(id:number){
   return this.myClient.delete(`${this.profile}/${id}`)
 }
+// IsLoggedIn(){
+//   return localStorage.getItem('token')!=null
+// }
+isAdmin(){
+  return localStorage.getItem('role')=="admin";
+}
+isUser(){
+  return localStorage.getItem('role')=="user";
+}
 
 }
+

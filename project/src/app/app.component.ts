@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'project';
   LoggedInAdmin: any;
   constructor(){
-    this.LoggedInAdmin = localStorage.getItem("UserId")
+    this.LoggedInAdmin = localStorage.getItem("role")
     
   }
 

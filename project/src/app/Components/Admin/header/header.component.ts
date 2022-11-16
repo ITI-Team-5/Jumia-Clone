@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   name:any;
   ngOnInit(): void {
     this.isLoggedIn = localStorage.getItem("token");
-    this.name = localStorage.getItem('userType');
+    this.name = localStorage.getItem('name');
   }
 
   logout(){
