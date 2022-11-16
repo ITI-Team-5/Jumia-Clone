@@ -1,0 +1,27 @@
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-xl-6 col-lg-12 col-md-12 col-12">
+            <img class="img-fluid w-100 img-thumbnail" style="height: 500px !important;" src="{{imgsrc}}/{{singleProduct.image}}" alt="{{singleProduct.image}}">
+
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-5">
+            <h2 style="text-transform:capitalize">{{singleProduct.title}}</h2>
+            <p>{{'Product Details'|translate}} : {{singleProduct.details}}</p>
+            <div class="row">
+                <div style="font-weight:bolder;font-size:18px;" class="col-xl-12 col-lg-12 col-md-12 col-12 text-muted mb-3">{{'Price'|translate}}: {{singleProduct.price}} {{'EGP'|translate}}</div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                
+                    <button style="font-size:15px" class="btn btn-primary me-2 " (click)="minus()"> <i class="fa fa-minus"></i> </button>
+
+                    <input type="" class="p-1 text-center" style="width:80px;font-size:17px;border:1px solid rgb(0, 110, 255)" [(ngModel)]="quantity">
+                    <button style="font-size:15px" class="btn btn-primary mx-2" (click)="plus()"><i class="fa fa-plus"></i></button>
+
+                </div>
+            </div>
+            <button class="btn w-25 btn-outline-primary rounded my-2" (click)="addtocart()">{{'Add to Cart'|translate}}</button>
+            
+        
+        </div>
+    </div>
+</section>
+

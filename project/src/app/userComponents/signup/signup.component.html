@@ -1,0 +1,48 @@
+<section class="bg-light d-flex justify-content-center align-items-center">
+      <div class="card custom-card mt-2 mb-5">
+        <div class="text-center">
+          <h1>Sign Up</h1>
+          <h6>Register Yourself!</h6>
+        </div>
+          <form [formGroup]="signup" (ngSubmit)="addUser()">
+            <div class="mb-2">
+              <label for="exampleInputName1" class="form-label">Your Name</label>
+              <input formControlName="name" #name type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input formControlName="email" #email type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input formControlName="password"  #password type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">confirm password </label>
+              <input formControlName="password_confirmation"  #password type="password" class="form-control" id="exampleInputConfPassword1">
+              <div class="text-danger" >
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">phone</label>
+              <input formControlName="phone"  #phone type="phone" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">address</label>
+              <input formControlName="address"  #address type="address" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-2">
+              <label for="male" class="form-label me-2">male</label>
+              <input formControlName="gender" #gender type="radio" id="male" name="gender" value="male">
+              <label for="female"class="form-label ms-5 me-2">female</label>
+              <input formControlName="gender" #gender type="radio" id="female" name="gender" value="female">
+            </div>
+            <button type="submit" class="btn btn-danger">Sign Up</button>
+          </form>
+          <a routerLink="/login"> Already registered...click to login</a>
+      </div>
+</section>
+

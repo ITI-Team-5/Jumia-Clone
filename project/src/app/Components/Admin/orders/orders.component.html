@@ -1,0 +1,42 @@
+<app-header></app-header>
+<section class="container-fluid">
+<table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
+    <thead>
+    <tr style="text-transform:capitalize" class="bg-white text-primary">
+        <th>order_id</th>
+        <th>username</th>
+        <th>email</th>
+        <th>status</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let o of orders">
+        <td>{{o.id}}</td>
+        <td>{{o.name}}</td>
+        <td>{{o.email}}</td>
+        <td>
+            <!---->
+            <form  [formGroup]="form"> 
+            <select (change)="UpdateOrder(o.id)" formControlName="status" class="form-control" id="">
+                <option [selected]="o.status=='pending'" value="pending">
+                    pending
+                </option>
+                <option [selected]="o.status=='approved'" value="approved">
+                    approved
+                </option>
+                <option [selected]="o.status=='rejected'" value="rejected">
+                   Rejected
+                </option>
+            </select>
+            <!-- <button type="submit" class="btn btn-secondary">Click</button> -->
+        </form>
+        </td>
+        <td><a class="btn btn-outline-primary" 
+            routerLink="{{o.id}}">
+            Order Details
+        </a></td>
+    </tr>
+</tbody>
+</table>
+</section>

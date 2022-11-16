@@ -1,0 +1,62 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "title": "product 2",
+      "image": "bersheka.jpg",
+      "price": 350,
+      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem."
+    },
+    {
+      "id": 3,
+      "title": "product 3",
+      "image": "nasa.jpg",
+      "price": 450,
+      "details": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab nulla placeat labore officiis necessitatibus tenetur mollitia impedit sint natus voluptatem."
+    },
+    {
+      "title": "product4",
+      "image": "addidas-short.jpeg",
+      "price": "754",
+      "details": " ksad ka kdkas dkadksadaskdkasdk sakdak dksa dka",
+      "id": 11
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "ahmed",
+      "email": "ahmed@gmail.com",
+      "gender": "male",
+      "password": 12345645
+    },
+    {
+      "id": 2,
+      "name": "aly",
+      "email": "aly@gmail.com",
+      "password": 23645987,
+      "gender": "male"
+    },
+    {
+      "name": "hamada",
+      "email": "hamada@gamil.com",
+      "password": "23654789514",
+      "gender": "male",
+      "id": 3
+    },
+    {
+      "name": "toto",
+      "email": "toto@gmail.com",
+      "password": "toto1234",
+      "gender": "female",
+      "id": 4
+    },
+    {
+      "name": "mezo",
+      "email": "mezo@yahoo.com",
+      "password": "123456789",
+      "gender": "male",
+      "id": 5
+    }
+  ]
+}
