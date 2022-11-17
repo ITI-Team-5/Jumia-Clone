@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ProductsRequest;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
@@ -22,8 +24,10 @@ class ProductController extends Controller
 
     }
 
-    public function store(Request $request)
+
+    public function store(ProductsRequest $request)
     {
+        $request->validated();
         if ($image = $request->file('image'))
          {
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -37,7 +41,7 @@ class ProductController extends Controller
                 'details' => $data['details'],
                 'image' =>$profileImage,
                 'price' => $data['price'],
-                'discount'=> $data['discount'],
+                'discount'=>$data['discount']
             ]);
         }
         else{
@@ -49,22 +53,27 @@ class ProductController extends Controller
                 'details' => $data['details'],
                 // 'image' =>$profileImage,
                 'price' => $data['price'],
-                'discount'=> $data['discount'],
+                'discount'=>$data['discount']
             ]);
         }
 
     }
 
-    public function edit($slug){
+    public function edit($id){
 
-        return $editProduct = Product::where('SKU', $slug)->get()->first();
+        return $editProduct = Product::find($id);
 
     }
 
-    public function update(Request $request,$sku )
+    public function update(Request $request,$id )
     {
-
-        $product = Product::where('SKU', $sku)->get()->first();
+        $product = Product::find($id);
+        $request->validate([
+            'title' =>['required'],
+            'SKU' =>['required','unique:products,SKU,'.$id],
+            'details' =>['required'],
+            'price' =>['required'],
+        ]);
 
         if ($image = $request->file('image'))
          {
@@ -80,7 +89,8 @@ class ProductController extends Controller
             'details' => $request->details,
             'image' => $profileImage,
             'price' => $request->price,
-            'discount'=>$request -> discount
+            'discount'=>$request->discount
+
         ]);
 
          }
@@ -90,7 +100,7 @@ class ProductController extends Controller
                 'SKU' => $request->SKU,
                 'details' => $request->details,
                 'price' => $request->price,
-                'discount'=>$request -> discount
+                'discount'=>$request->discount
         ]);
         //  return dd($request);
         }

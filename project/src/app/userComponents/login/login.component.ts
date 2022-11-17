@@ -12,6 +12,7 @@ import { NgIfContext } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
+  
   UserId=0;
   LoggedInAdmin: any;
  

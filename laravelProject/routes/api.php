@@ -6,6 +6,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +58,45 @@ Route::get("profiles/{profile}",[ProfileController::class,'show']);
 Route::get("profiles/{profile}/edit",[ProfileController::class,'edit']);
 Route::post("profiles/{profile}",[ProfileController::class,'update']);
 Route::delete("profiles/{profile}",[ProfileController::class,'destroy']);
+
+
+Route::post('/sanctum/token', function (Request $request) {
+$request->validate([
+    'email' => 'required|email',
+    'password' => 'required',
+]);
+
+$user = User::where('email', $request->email)->first();
+
+if (! $user || ! Hash::check($request->password, $user->password)) {
+    throw ValidationException::withMessages([
+        'email' => ['The provided credentials are incorrect.'],
+    ]);
+}
+
+return (['token' => $user->createToken($request->email)->plainTextToken,]);
+});
+
+
+Route::get('google/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('google/auth/callback', function () {
+    $githubUser = Socialite::driver('google')->stateless()->user();
+
+    $user = User::updateOrCreate([
+        'email' => $githubUser->email,
+    ], [
+        'name' => $githubUser->name,
+        'email' => $githubUser->email,
+        'github_token' => $githubUser->token,
+        'github_refresh_token' => $githubUser->refreshToken,
+    ]);
+
+    Auth::login($user);
+
+    return $user;
+});
+
+

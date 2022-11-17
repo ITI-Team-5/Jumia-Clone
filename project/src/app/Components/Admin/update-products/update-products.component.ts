@@ -17,11 +17,12 @@ export class UpdateProductsComponent implements OnInit {
   constructor(public fb: FormBuilder, private myService:ServicesService,private route:ActivatedRoute) 
   {
          this.form = this.fb.group({
-           title: null,
-          SKU: null, 
-           price: null,
-          details: null,
-           image: null
+          title: ['',[Validators.required]],
+          SKU: ['',[Validators.required,Validators.maxLength(10)]],
+          image:null,
+          price: [0,[Validators.required]],
+          details: ['',[Validators.required]],
+          discount:null
       })
 
     // this.myService.getByIdedit(this.route.snapshot.params['id']).subscribe((data:any)=>{
@@ -62,10 +63,28 @@ export class UpdateProductsComponent implements OnInit {
                 SKU: new FormControl(data['SKU']),
                  image:new FormControl(data['image']),
                 price:new FormControl( data['price']),
+                discount:new FormControl( data['discount']),
                 details:new FormControl(data['details'])
             })
     });
   }
+  get titlevalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.title
+  }
+  get SKUvalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.SKU
+  }
+  get pricevalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.price
+  }
+  get detailsvalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.details
+  }
+  
 
   uploadFile(event: Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -82,13 +101,16 @@ export class UpdateProductsComponent implements OnInit {
     formData.append('SKU', this.form.controls['SKU'].value);
     formData.append('details', this.form.controls['details'].value);
     formData.append('price', this.form.controls['price'].value);
+    formData.append('discount', this.form.controls['discount'].value);
     formData.append('_METHOD', 'PUT');
 
     console.log(formData);
     this.myService.UpdateProd(formData,this.route.snapshot.params['id']).subscribe
     ((data)=>{
       console.log(data);
+      alert('product updated successfully');
        window.location.href="/admin";
+
     })
   }
 

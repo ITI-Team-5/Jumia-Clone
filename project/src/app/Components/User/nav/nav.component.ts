@@ -14,7 +14,8 @@ LoggedInAdmin:any;
 flag = false;
 name:any;
 cartItem: any ;
-
+title:any;
+products:any[]=[];
   constructor( public myservice: ServicesService ,private route: ActivatedRoute ) { 
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
@@ -60,11 +61,55 @@ cartItem: any ;
     }
     this.myservice.cartSubject.next(this.cartItem);
   }
-
+  search(){
+    if(this.title !=""){
+      this.products = this.products.filter((res:any)=>{
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
+      })
+  }else{
+    this.ngOnInit()
+  }
+    console.log(this.title.toLocaleLowerCase())
+  }
   
 }
 
  
+
+
+
+
+    //     // window.location.href = "/"; 
+
+
+
+
+
+    // var token = localStorage.getItem('token');
+  //  let token = localStorage.getItem(data['token']);
+   
+  //   const httpOptions ={
+  //     Headers : new HttpHeaders({
+  //       'Authorization': 'token'
+  //     })
+  //   }
+  //  this.myService.userLogout(httpOptions).subscribe({
+  //   next(data){
+  //     var token = localStorage.getItem('token');
+  //     console.log(data);
+  //     console.log(token);
+  //     localStorage.removeItem("token");
+  //     localStorage.removeItem("UserId");
+      
+  //     // window.location.href = "/"; 
+  //   },
+  //   error(err){
+  //     alert("data not deleted");
+  //     console.log(err);
+  //   }
+    
+  //  }) 
+  // }
 
 
 

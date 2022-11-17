@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreUserRequest;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Order_Product;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -26,6 +29,13 @@ class ProfileController extends Controller
     public function update(Request $request,$profileId){
         $Profile = User::find($profileId);
 
+        $request->validate([
+            'name' => ['required','min:3'],
+            'email' => ['required','unique:users,email,'.$profileId],
+            'password' => ['required',Password::min(8)->letters()->mixedCase()->symbols()->numbers()],
+            'address' =>['required'],
+            'phone' =>['required','min:10'],
+        ]);
       return  $Profile->update([
             'name' =>$request->name,
             'email' =>$request->email,

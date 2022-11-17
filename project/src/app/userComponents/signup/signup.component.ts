@@ -15,6 +15,8 @@ export class SignupComponent implements OnInit {
   signup:FormGroup|any;
   LoggedInAdmin: any;
 
+  visible:boolean = true;
+  changetype:boolean = true;
   constructor(
               public fb:FormBuilder , private _route:Router ,
               public myService: ServicesService 
@@ -33,6 +35,10 @@ export class SignupComponent implements OnInit {
 
   // signupUser:any;
 
+  showpassword(){
+  this.visible = !this.visible
+  this.changetype = !this.changetype
+  }
   ngOnInit(): void {
     this.LoggedInAdmin = localStorage.getItem("UserId")
     if(this.LoggedInAdmin){
@@ -43,14 +49,35 @@ export class SignupComponent implements OnInit {
   }
  
   AddUserForm = new FormGroup ({
-    "name": new FormControl('',/* [Validators.required, Validators.minLength(3)]*/), 
-    "email": new FormControl('',/*[Validators.email, Validators.required]*/),
-    "password": new FormControl('',/* [Validators.min(7),Validators.max(20),Validators.required]*/),
-    "password_confirmation": new FormControl('',/*Validators.required*/),
-    "phone": new FormControl('',/*Validators.required*/),
-    "address": new FormControl('',/*Validators.required*/),
-    "gender": new FormControl()
+    name: new FormControl('',[Validators.required, Validators.minLength(3)]), 
+    email: new FormControl('',[Validators.email, Validators.required]),
+    password: new FormControl('',[Validators.min(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.required]),
+    phone: new FormControl('',[Validators.required,Validators.minLength(10)]),
+    address: new FormControl('',Validators.required),
+    accept: new FormControl('',Validators.required)
   });
+  get namevalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.AddUserForm.controls.name.valid
+  }
+  get emailvalidation(){
+    return this.AddUserForm.controls.email.valid
+  }
+  get passwordvalidation(){
+    return this.AddUserForm.controls.password.valid
+  }
+  get phonevalidation(){
+    return this.AddUserForm.controls.phone.valid
+  }
+  get addressvalidation(){
+    return this.AddUserForm.controls.address.valid
+  }
+  get acceptvalidation(){
+    return this.AddUserForm.controls.accept.valid
+  }
+  
+
+
 
   // addUser(){
   //   console.log(this.AddUserForm);
@@ -77,9 +104,9 @@ export class SignupComponent implements OnInit {
   // }
 
   addUser(){
-    console.log(this.signup);
+    console.log(this.AddUserForm);
     // if(this.AddUserForm.valid){
-      this.myService.addUser(this.signup.value).subscribe(
+      this.myService.addUser(this.AddUserForm.value).subscribe(
        {
         next(data){
           console.log(data);
@@ -94,19 +121,20 @@ export class SignupComponent implements OnInit {
 
       )
   }
-  get ValidName(){
-    // return this.signup.value.name.validdata['image']
-    return this.AddUserForm.controls.name.valid
-  }
-  get ValidEmail(){
-    return this.AddUserForm.controls.email.valid
-  }
-  get ValidPassword(){
-    return this.AddUserForm.controls.password.valid
-  }
-  get ValidConfirmPass(){
-    return this.AddUserForm.controls.password_confirmation.valid
-  }
+  // get ValidName(){
+  //   // return this.signup.value.name.validdata['image']
+  //   return this.AddUserForm.controls.name.valid
+  // }
+  // get ValidEmail(){
+  //   return this.AddUserForm.controls.email.valid
+  // }
+  // get ValidPassword(){
+  //   return this.AddUserForm.controls.password.valid
+  // }
+  // get ValidConfirmPass(){
+  //   return this.AddUserForm.controls.password_confirmation.valid
+  // }
 
 
+  
 }

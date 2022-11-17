@@ -9,19 +9,21 @@ use  App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
     public function registerNewUser(StoreUserRequest  $request)
     {
 
-        // echo "hello";
+         $request->validated();
         $newUser = User::create([
             'name' => request()->name,
             'email' => request()->email,
-            'password' => request()->password ,
-            'phone' =>  request()->phone,
-            'address' =>  request()->address,
+            'password' => /*Hash::make(*/ request()->password,
+            'phone' => /*Hash::make(*/ request()->phone,
+            'address' => /*Hash::make(*/ request()->address,
+            'accept' => /*Hash::make(*/ request()->accept,
         ]);
         return $newUser;
 
@@ -35,7 +37,14 @@ class UserController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-            if($request->email == 'admin@gmail.com' &&  $request->password == '123456789'){
+        // if (! $user || ! Hash::check($request->password, $user->password)) {
+        //     return response()->json ([
+        //         'content' => 'The provided credentials are incorrect.',
+        //     ],404);
+        // }
+        // else{
+
+            if($request->email == 'admin@gmail.com' && /*Hash::check*/ $request->password == 'Admin@123'){
                 $userType = 'admin';
                 return response()->json
                 (['token' => $user->createToken($request->email)->plainTextToken,
@@ -49,6 +58,9 @@ class UserController extends Controller
            'data'=> $user,
             'userType' => $userType,
            ]);
+
+
+        // }
 
     }
     public function logout(Request $request){

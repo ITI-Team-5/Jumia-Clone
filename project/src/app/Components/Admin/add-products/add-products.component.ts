@@ -15,14 +15,33 @@ export class AddProductsComponent implements OnInit {
   constructor(public fb:FormBuilder,public myService: ServicesService,private _route:Router)
    {
       this.form = this.fb.group({
-      title: '',
-      SKU: '',
+      title: ['',[Validators.required]],
+      SKU: ['',[Validators.required,Validators.maxLength(10)]],
       image:null,
-      price: 0,
-      details: ''
+      price: [0,[Validators.required]],
+      details: ['',[Validators.required]],
+      discount:null
     })
    }
+   get titlevalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.title
+  }
+  get SKUvalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.SKU
+  }
+  get pricevalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.price
+  }
+  get detailsvalidation(){
+    // return this.signup.value.name.validdata['image']
+    return this.form.value.details
+  }
+  
 
+   
   ngOnInit(): void {
    let authAdmin :any;
    authAdmin = localStorage.getItem('userType');
@@ -54,12 +73,14 @@ submitForm()
      formData.append('SKU', this.form.controls['SKU'].value);
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
+     formData.append('discount', this.form.controls['discount'].value);
     //  formData.append('_METHOD', 'POST');
      console.log(formData);
 
      this.myService.AddProd(formData).subscribe(
       (data:any)=>{
         window.location.href="/admin";
+        alert('product added successfully');
       }
      );
 

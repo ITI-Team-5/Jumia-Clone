@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private myservice:ServicesService) { }
   SortbyParam = '';
-  SortDirection = 'asc'; products:any[]=[];
+  SortDirection = 'asc'; 
+  products:any[]=[];
  productsInCart:any[]=[]
  page:number = 1;
   total:number = 0;
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
  users:any[]=[];
 
  
+
   ngOnInit(): void {
      this.getdata();
      this.LoggedInAdmin = localStorage.getItem("UserId")

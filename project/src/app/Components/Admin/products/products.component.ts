@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../Services/services.service';
 import { Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-products',
