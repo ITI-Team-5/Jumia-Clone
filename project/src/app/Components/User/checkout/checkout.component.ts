@@ -15,10 +15,10 @@ export class CheckoutComponent implements OnInit {
   id = localStorage.getItem('UserId') ;
   orders:any[]=[];
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("userType")
-    if(this.LoggedInAdmin != 'user'){
-        window.location.href = '/admin';
-    }
+ // this.LoggedInAdmin = localStorage.getItem("userType")
+    // if(this.LoggedInAdmin != 'user'){
+    //     window.location.href = '/admin';
+    // }
     this.myservice.getByProfileId(this.id).subscribe((data)=>{
       this.profile = data;
      // console.log(data);

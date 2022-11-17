@@ -19,40 +19,9 @@ export class ProductsComponent implements OnInit {
   page:number = 1;
   total:number = 0;
   ngOnInit(): void {
-    this.LoggedInAdmin = localStorage.getItem("userType")
-    if(this.LoggedInAdmin != 'admin'){
-        window.location.href = '/';
-    
-    }
-    
-    // if(localStorage.getItem("user")){
-    //   // alert("welcome "+sessionStorage.getItem("userEmail"));
-    // }
-    // else{
-    //   window.location.href = "/";
-    // }
+   
     this.getProducts();
-    // if(sessionStorage.getItem("Admin")){
-    //   // alert("welcome "+sessionStorage.getItem("Admin"));
-    // }
-    // else{
-    //   alert("you are not an Authorized");
-    //   this._route.navigate(['']);
-
-    // }
-
-    // let that = this;
-    // this.myService.getAllProducts().subscribe(
-    //   {
-    //     next(data){
-    //       that.products = data;
-    //     },
-    //     error(err){
-    //       console.log(err);
-    //     }
-    //   }
-    // )
-
+    
  
   }
   getProducts(){

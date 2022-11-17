@@ -16,81 +16,100 @@ import { EditProfileComponent } from './Components/User/edit-profile/edit-profil
 import { CheckoutComponent } from './Components/User/checkout/checkout.component';
 import { AboutComponent } from './Components/User/about/about.component';
 import { ContactComponent } from './Components/User/contact/contact.component';
+import { UserGuard } from './Components/Admin/user.guard';
+import { AdminGuard } from './Components/Admin/admin.guard';
+import { DiscountsComponent } from './Components/User/discounts/discounts.component';
 
 const routes: Routes = [
   {
     path:"",
-    component:HomeComponent
+    component:HomeComponent,
+    canActivate:[UserGuard]
   },
   {
     path:"cart",
-    component:CartComponent
+    component:CartComponent,
+    canActivate:[UserGuard]
   },
   {
     path:"product/:id",
-    component:ProductDetailsComponent
+    component:ProductDetailsComponent,
+    canActivate:[UserGuard]
   },
   {
     path:"admin",
-    component:ProductsComponent
+    component:ProductsComponent,
+    canActivate:[AdminGuard]
   },
   {
     path:"Products",
-    component:ProductsComponent
+    component:ProductsComponent,
+    canActivate:[UserGuard]
+  },
+  {
+    path:"products/discounts",
+    component:DiscountsComponent,
+    canActivate:[UserGuard]
   },
   {
     path:"AddProducts",
-    component:AddProductsComponent
+    component:AddProductsComponent,
+    canActivate:[AdminGuard]
   },
   {
     path:"products/edit/:id",
-    component:UpdateProductsComponent
+    component:UpdateProductsComponent,
+    canActivate:[AdminGuard]
   },
   {
     path: "login",
-    component:LoginComponent
+    component:LoginComponent,
   },
   {
     path: "signup",
-     component:SignupComponent
+     component:SignupComponent,
     },
   {
     path: "orders",
-     component:OrdersComponent
+     component:OrdersComponent,
+     canActivate:[AdminGuard]
     },
   {
     path: "orders/:id",
-     component:OrderProductComponent
+     component:OrderProductComponent,
+     canActivate:[AdminGuard]
     },
     {
       path:"profiles",
-      component:ProfileComponent
+      component:ProfileComponent,
+      canActivate:[UserGuard]
     },
     {
       path:"checkout",
-      component:CheckoutComponent
+      component:CheckoutComponent,
+      canActivate:[UserGuard]
     },
     {
       path:"about",
-      component:AboutComponent
+      component:AboutComponent,
+      canActivate:[UserGuard]
     },
     {
       path:"contact",
-      component:ContactComponent
+      component:ContactComponent,
+      canActivate:[UserGuard]
     },
     {
       path:"profiles/edit/:id",
-      component:EditProfileComponent
+      component:EditProfileComponent,
+      canActivate:[UserGuard]
     },
   {
     path:"**",
     component:ErrorComponent
   },
 
-
-
-];
-
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

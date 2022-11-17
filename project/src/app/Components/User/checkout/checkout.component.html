@@ -27,7 +27,7 @@
                     <td>{{o.total}} EGP</td> 
                     <td>{{o.status}} </td>
                     <td>{{o.created_at}} </td>
-                    <td><a *ngIf="o.id && o.status =='pending'" (click)="DeleteOrder(o.id)" class="me-3"><i class="text-danger fa fa-close"></i></a> <a (click)="Orderchange(o.id)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-primary fa fa-eye"></i></a></td>
+                    <td><a style="cursor:pointer" *ngIf="o.id && o.status =='pending'" (click)="DeleteOrder(o.id)" class="me-3"><i class="text-danger fa fa-close"></i></a> <a style="cursor:pointer" (click)="Orderchange(o.id)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-primary fa fa-eye"></i></a></td>
                     
                     </tr>
                     </tbody>

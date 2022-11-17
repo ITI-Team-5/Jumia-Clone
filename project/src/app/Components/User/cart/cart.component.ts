@@ -24,11 +24,11 @@ export class CartComponent implements OnInit {
     //   alert("please logged in ....");
     //   window.location.href = "/login";
     // }
-    this.LoggedInAdmin = localStorage.getItem("userType")
-     if(this.LoggedInAdmin != 'user'){
-         window.location.href = '/admin';
-     
-     }
+   // this.LoggedInAdmin = localStorage.getItem("userType")
+    //  if(this.LoggedInAdmin != 'user'){
+    //      window.location.href = '/admin';
+
+    //  }
 
 
     this.listItemstocart()

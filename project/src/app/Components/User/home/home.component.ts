@@ -23,15 +23,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
      this.getdata();
      this.LoggedInAdmin = localStorage.getItem("UserId")
-     if(!this.LoggedInAdmin){
-         window.location.href = '/login';
-     
-     }
-     this.LoggedInAdmin = localStorage.getItem("userType")
-     if(this.LoggedInAdmin == 'admin'){
-         window.location.href = '/admin';
-     
-     }
+     //  this.LoggedInAdmin = localStorage.getItem("UserId")
+    //  if(!this.LoggedInAdmin){
+    //      window.location.href = '/login';
+
+    //  }
+    //  this.LoggedInAdmin = localStorage.getItem("userType")
+    //  if(this.LoggedInAdmin == 'admin'){
+    //      window.location.href = '/admin';
+
+    //  }
  
 
     //  this.getuser()
