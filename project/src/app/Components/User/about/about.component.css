@@ -1,6 +1,12 @@
-.breadcrumb{
-    background:linear-gradient(to right ,
-    rgba(255,0,0,0.8),rgb(0,0,0,0.5),rgba(0,0,0,1))
+.head1
+{
+    text-align: center;
+    color: #f49719;
+    font-size: 30px;
+    font-weight: 400;
+}
+.video{
+    height: 630px;
 }
 .teamss{
     display: flex;

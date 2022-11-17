@@ -28,7 +28,10 @@ export class CartComponent implements OnInit {
   
     this.listItemstocart()
     this.getTotal()
-    // this.getcountdata()
+    this.CartItemFun(this.cartItem)
+    if(!this.cartItem ){
+      this.cartItem = 0;
+    }
     
   }
 

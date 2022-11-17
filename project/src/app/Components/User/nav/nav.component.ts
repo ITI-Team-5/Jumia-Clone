@@ -26,6 +26,11 @@ products:any[]=[];
     this.LoggedInAdmin = localStorage.getItem("role")
     this.isLoggedIn = localStorage.getItem("token");
     this.name = localStorage.getItem("name");
+    this.CartItemFun()
+    if(!this.cartItem){
+      this.cartItem = 0 ;
+    }
+
     
   }
 
