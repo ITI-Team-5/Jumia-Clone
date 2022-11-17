@@ -43,17 +43,17 @@ export class AddProductsComponent implements OnInit {
 
    
   ngOnInit(): void {
-   let authAdmin :any;
-   authAdmin = localStorage.getItem('userType');
-   console.log(authAdmin);
-    if(authAdmin == 'admin'){
-    // alert("welcome admin");
-    }
-    else{
-      alert("you are not an Authorized");
-      window.location.href = "/";
+  //  let authAdmin :any;
+  //  authAdmin = localStorage.getItem('userType');
+  //  console.log(authAdmin);
+  //   if(authAdmin == 'admin'){
+  //   // alert("welcome admin");
+  //   }
+  //   else{
+  //     alert("you are not an Authorized");
+  //     window.location.href = "/";
 
-    }
+  //   }
   }
  
 

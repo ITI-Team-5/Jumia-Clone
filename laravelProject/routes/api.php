@@ -41,9 +41,12 @@ Route::get("/signup/{id}", [UserController::class, 'getDataUserId']);
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::delete('logout',   [UserController::class, 'logout']);
   });
+Route::post('/sanctum/token', [UserController::class,'login']);
+
 
 //products
 Route::get("products",[ProductController::class,'index']);
+Route::get("products/discounts",[ProductController::class,'discounts']);
 Route::get("products/{product}",[ProductController::class,'show']);
 Route::post("products",[ProductController::class,'store']);
 // Route::post("products",[ProductController::class,'store']);
@@ -60,43 +63,28 @@ Route::post("profiles/{profile}",[ProfileController::class,'update']);
 Route::delete("profiles/{profile}",[ProfileController::class,'destroy']);
 
 
-Route::post('/sanctum/token', function (Request $request) {
-$request->validate([
-    'email' => 'required|email',
-    'password' => 'required',
-]);
-
-$user = User::where('email', $request->email)->first();
-
-if (! $user || ! Hash::check($request->password, $user->password)) {
-    throw ValidationException::withMessages([
-        'email' => ['The provided credentials are incorrect.'],
-    ]);
-}
-
-return (['token' => $user->createToken($request->email)->plainTextToken,]);
-});
 
 
-Route::get('google/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
 
-Route::get('google/auth/callback', function () {
-    $githubUser = Socialite::driver('google')->stateless()->user();
+// Route::get('google/auth/redirect', function () {
+//     return Socialite::driver('google')->redirect();
+// });
 
-    $user = User::updateOrCreate([
-        'email' => $githubUser->email,
-    ], [
-        'name' => $githubUser->name,
-        'email' => $githubUser->email,
-        'github_token' => $githubUser->token,
-        'github_refresh_token' => $githubUser->refreshToken,
-    ]);
+// Route::get('google/auth/callback', function () {
+//     $githubUser = Socialite::driver('google')->stateless()->user();
 
-    Auth::login($user);
+//     $user = User::updateOrCreate([
+//         'email' => $githubUser->email,
+//     ], [
+//         'name' => $githubUser->name,
+//         'email' => $githubUser->email,
+//         'github_token' => $githubUser->token,
+//         'github_refresh_token' => $githubUser->refreshToken,
+//     ]);
 
-    return $user;
-});
+//     Auth::login($user);
+
+//     return $user;
+// });
 
 

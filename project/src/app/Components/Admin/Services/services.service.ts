@@ -17,6 +17,15 @@ private signup  = "http://localhost:8000/api/signup"
 private login  = "http://localhost:8000/api/login"
 private logout  = "http://localhost:8000/api/logout"
 private profile  = "http://localhost:8000/api/profiles"
+private discount = "http://localhost:8000/api/products/discounts"
+
+getDiscounts(){
+  return this.myClient.get(this.discount);
+}
+
+
+
+
 
 getAllOrders(){
   return this.myClient.get(this.orders)
@@ -93,27 +102,16 @@ DeleteOrd(id:number){
 cartSubject = new Subject<any>();
 
 
-// CartItemFun(){
-//   var CartCount = JSON.parse(localStorage.getItem('cart')) //------->>>>>> 3dd kol al products .length 
-//   // var itemCount = CartCount['0'].quanity; 
-  
-//   // console.log(itemCount);// ------->>>>>>> kam montg mn nafs alproduct 
-//   if(localStorage.getItem('cart')){
-//     // for()
-//     for(let i =0; i < CartCount.length ; i++){
-//       // CartCount[i].quanity 
-//        this.totalCount += CartCount[i].quanity
-
-//       // itemCount[i];
-//     }
-//       // console.log(this.totalCount);
-//     // this.cartItem = CartCount.length;
-//   }
-//    let final = JSON.parse(this.totalCount.toString());
-//   return final;
-// }
-
+isAdmin(){
+  return localStorage.getItem('role')=="admin";
 }
+isUser(){
+  return localStorage.getItem('role')=="user";
+}
+}
+
+
+
 
 
 

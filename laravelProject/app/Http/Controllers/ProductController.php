@@ -24,6 +24,9 @@ class ProductController extends Controller
 
     }
 
+    public function discounts(){
+         return Product::where('discount','!=','0')->get();
+    }
 
     public function store(ProductsRequest $request)
     {

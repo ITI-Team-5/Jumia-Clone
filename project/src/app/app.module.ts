@@ -38,6 +38,7 @@ import { DiscountSliderComponent } from './Components/User/discount-slider/disco
 import { LatestComponent } from './Components/User/latest/latest.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
+import { DiscountsComponent } from './Components/User/discounts/discounts.component';
 
 
 
@@ -71,6 +72,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     DiscountSliderComponent,
     LatestComponent,
   
+    DiscountsComponent,
     
     
     
