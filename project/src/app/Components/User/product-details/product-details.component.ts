@@ -28,7 +28,7 @@ export class ProductDetailsComponent implements OnInit {
      //);
 
      this.myserv.getById(this.id).subscribe(
-      (data)=> this.singleProduct =data
+      (data)=> this.singleProduct = data
      );
 
 

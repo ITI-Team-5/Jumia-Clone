@@ -9,9 +9,10 @@ import { ServicesService } from '../../Admin/Services/services.service';
 export class HomeComponent implements OnInit {
   LoggedInAdmin: any;
 
-  constructor(private myserv:ServicesService) { }
+  constructor(private myservice:ServicesService) { }
   SortbyParam = '';
-  SortDirection = 'asc'; products:any[]=[];
+  SortDirection = 'asc'; 
+  products:any[]=[];
  productsInCart:any[]=[]
  page:number = 1;
   total:number = 0;
@@ -19,35 +20,17 @@ export class HomeComponent implements OnInit {
 
  users:any[]=[];
 
+ 
 
   ngOnInit(): void {
      this.getdata();
      this.LoggedInAdmin = localStorage.getItem("UserId")
-     //  this.LoggedInAdmin = localStorage.getItem("UserId")
-    //  if(!this.LoggedInAdmin){
-    //      window.location.href = '/login';
 
-    //  }
-    //  this.LoggedInAdmin = localStorage.getItem("userType")
-    //  if(this.LoggedInAdmin == 'admin'){
-    //      window.location.href = '/admin';
-
-    //  }
- 
-
-    //  this.getuser()
-  }
-
-  // getuser()
-  // {
-  //   this.myserv.getAllUsers().subscribe(
-  //     (data:any)=>this.users =data
-  //   )
-  // }
+   }
 
   getdata()
   {
-    this.myserv.getAllProducts(this.page).subscribe((response:any)=>{
+    this.myservice.getAllProducts(this.page).subscribe((response:any)=>{
       this.products = response.data;
       this.total = response.total;
     })

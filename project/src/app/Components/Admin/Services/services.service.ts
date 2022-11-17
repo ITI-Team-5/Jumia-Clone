@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from'rxjs';
+import { data } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -70,9 +72,7 @@ addUser(newUser:any){
 userLogin(newUser:any){
   return this.myClient.post(this.login,newUser)
 }
-// userLogout( httpOptions:any ){
-//   return this.myClient.delete(this.logout, httpOptions)  //-------------->>>>>>> >> a3mel eh 
-// }
+
 getAllUsers(){
   return this.myClient.get(this.signup)
 }
@@ -99,6 +99,8 @@ DeleteOrd(id:number){
   return this.myClient.delete(`${this.profile}/${id}`)
 }
 
+cartSubject = new Subject<any>();
+
 
 isAdmin(){
   return localStorage.getItem('role')=="admin";
@@ -106,5 +108,10 @@ isAdmin(){
 isUser(){
   return localStorage.getItem('role')=="user";
 }
-
 }
+
+
+
+
+
+

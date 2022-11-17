@@ -12,6 +12,7 @@ export class EditProfileComponent implements OnInit {
   UpdateProfileForm: FormGroup;
   constructor(public fb:FormBuilder,private myactivated:ActivatedRoute,private myservice:ServicesService,private route:Router) { 
     this.UpdateProfileForm = this.fb.group({
+    
       name: ["",Validators.required],
      email: ['',[Validators.email, Validators.required]], 
       phone: ['',[Validators.min(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.required]],

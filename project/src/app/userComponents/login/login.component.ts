@@ -11,6 +11,7 @@ import { NgIfContext } from '@angular/common';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   
   UserId=0;
   LoggedInAdmin: any;

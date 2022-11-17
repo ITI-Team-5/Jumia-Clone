@@ -16,6 +16,8 @@ import { EditProfileComponent } from './Components/User/edit-profile/edit-profil
 import { CheckoutComponent } from './Components/User/checkout/checkout.component';
 import { AboutComponent } from './Components/User/about/about.component';
 import { ContactComponent } from './Components/User/contact/contact.component';
+// import { PrivacyComponent } from './Components/User/privacy/privacy.component';
+import { PolicyComponent } from './Components/User/policy/policy.component';
 import { UserGuard } from './Components/Admin/user.guard';
 import { AdminGuard } from './Components/Admin/admin.guard';
 import { DiscountsComponent } from './Components/User/discounts/discounts.component';
@@ -25,6 +27,10 @@ const routes: Routes = [
     path:"",
     component:HomeComponent,
     canActivate:[UserGuard]
+  },
+  {
+    path:"policy",
+    component:PolicyComponent
   },
   {
     path:"cart",
@@ -104,14 +110,20 @@ const routes: Routes = [
       component:EditProfileComponent,
       canActivate:[UserGuard]
     },
+   
   {
     path:"**",
     component:ErrorComponent
   },
+  
 
-]
+];
+
+
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
+  // exports: [RouterModule]
 })
 export class AppRoutingModule { }

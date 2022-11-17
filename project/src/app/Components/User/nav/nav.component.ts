@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { data } from 'jquery';
 import { HttpHeaders } from '@angular/common/http';
@@ -13,7 +13,14 @@ isLoggedIn: any;
 LoggedInAdmin:any;
 flag = false;
 name:any;
-  constructor(private _route:Router, public myService: ServicesService ) {   }
+cartItem: any ;
+title:any;
+products:any[]=[];
+  constructor( public myservice: ServicesService ,private route: ActivatedRoute ) { 
+    this.myservice.cartSubject.subscribe((data)=>{
+      this.cartItem = data;
+    })
+    }
 
   ngOnInit(): void {
     this.LoggedInAdmin = localStorage.getItem("role")
@@ -30,6 +37,38 @@ name:any;
     localStorage.removeItem("UserId");
     window.location.href= "/login"
   } 
+ 
+
+  CartItemFun(){
+    var CartCount = JSON.parse(localStorage.getItem('cart')) 
+    var totalCount = 0;
+    if(localStorage.getItem('cart')){
+      for(let i =0; i < CartCount.length ; i++){
+         totalCount += CartCount[i].quanity
+      }
+      
+        console.log(totalCount);
+        this.cartItem = totalCount;
+    }
+    this.myservice.cartSubject.next(this.cartItem);
+  }
+  search(){
+    if(this.title !=""){
+      this.products = this.products.filter((res:any)=>{
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
+      })
+  }else{
+    this.ngOnInit()
+  }
+    console.log(this.title.toLocaleLowerCase())
+  }
+  
+}
+
+ 
+
+
+
 
     //     // window.location.href = "/"; 
 
@@ -63,5 +102,5 @@ name:any;
   //  }) 
   // }
 
-}
+
 

@@ -37,16 +37,11 @@ export class ProductsComponent implements OnInit {
 }
   DeleteProd(prod_id:any){
     console.log(prod_id);
-    let obj = this.products.find(item=>item.id == prod_id).title
-    if(confirm('Are u sure u wanna delete ' + obj)){
     this.myService.Deleteprod(prod_id).subscribe((data)=>{
       console.log(data);
       window.location.href = "/admin";
-      
     })
   }
-  }
-  
 
   search(){
     if(this.title !=""){

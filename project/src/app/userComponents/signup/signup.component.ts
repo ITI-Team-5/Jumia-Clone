@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
 
   signup:FormGroup|any;
   LoggedInAdmin: any;
+
   visible:boolean = true;
   changetype:boolean = true;
   constructor(
@@ -33,6 +34,7 @@ export class SignupComponent implements OnInit {
       }
 
   // signupUser:any;
+
   showpassword(){
   this.visible = !this.visible
   this.changetype = !this.changetype
@@ -122,5 +124,20 @@ export class SignupComponent implements OnInit {
 
       )
   }
+  // get ValidName(){
+  //   // return this.signup.value.name.validdata['image']
+  //   return this.AddUserForm.controls.name.valid
+  // }
+  // get ValidEmail(){
+  //   return this.AddUserForm.controls.email.valid
+  // }
+  // get ValidPassword(){
+  //   return this.AddUserForm.controls.password.valid
+  // }
+  // get ValidConfirmPass(){
+  //   return this.AddUserForm.controls.password_confirmation.valid
+  // }
+
+
   
 }
