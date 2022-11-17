@@ -19,7 +19,7 @@ export class LatestComponent implements OnInit {
   getdata()
   {
     this.myserv.getAllProducts(this.products).subscribe((response:any)=>{
-      this.products = response.data.slice(1,4);
+      this.products = response.data //.slice(1,4)
       this.imgsrc= 'http://localhost:8000/storage/images';
      
      // console.log(this.products.slice(1,3))

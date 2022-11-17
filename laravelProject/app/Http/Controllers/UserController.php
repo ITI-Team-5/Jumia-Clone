@@ -20,10 +20,10 @@ class UserController extends Controller
         $newUser = User::create([
             'name' => request()->name,
             'email' => request()->email,
-            'password' => /*Hash::make(*/ request()->password,
-            'phone' => /*Hash::make(*/ request()->phone,
-            'address' => /*Hash::make(*/ request()->address,
-            'accept' => /*Hash::make(*/ request()->accept,
+            'password' => Hash::make($request->password),
+            'phone' =>  request()->phone,
+            'address' =>  request()->address,
+            'accept' => request()->accept,
         ]);
         return $newUser;
 
@@ -36,6 +36,14 @@ class UserController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+
+        return (['token' => $user->createToken($request->email)->plainTextToken,'name' =>$user->name,'role' => $user->role,"UserId"=>$user->id]);
+
 
         // if (! $user || ! Hash::check($request->password, $user->password)) {
         //     return response()->json ([
@@ -44,20 +52,20 @@ class UserController extends Controller
         // }
         // else{
 
-            if($request->email == 'admin@gmail.com' && /*Hash::check*/ $request->password == 'Admin@123'){
-                $userType = 'admin';
-                return response()->json
-                (['token' => $user->createToken($request->email)->plainTextToken,
-                'data'=> $user,
-                'userType' => $userType
-                 ]);
-            }
-           $userType = 'user';
-           return response()->json
-           (['token' => $user->createToken($request->email)->plainTextToken,
-           'data'=> $user,
-            'userType' => $userType,
-           ]);
+        //     if($request->email == 'admin@gmail.com' && /*Hash::check*/ $request->password == 'Admin@123'){
+        //         $userType = 'admin';
+        //         return response()->json
+        //         (['token' => $user->createToken($request->email)->plainTextToken,
+        //         'data'=> $user,
+        //         'userType' => $userType
+        //          ]);
+        //     }
+        //    $userType = 'user';
+        //    return response()->json
+        //    (['token' => $user->createToken($request->email)->plainTextToken,
+        //    'data'=> $user,
+        //     'userType' => $userType,
+        //    ]);
 
 
         // }

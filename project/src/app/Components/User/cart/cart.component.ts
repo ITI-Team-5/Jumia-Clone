@@ -24,14 +24,7 @@ export class CartComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
-    this.LoggedInAdmin = localStorage.getItem("userType")
-     if(this.LoggedInAdmin != 'user'){
-         window.location.href = '/admin';
-     
-     }
-
-    // this.CartItemFun(this.cartNum)
+   
   
     this.listItemstocart()
     this.getTotal()
