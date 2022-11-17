@@ -1,0 +1,29 @@
+
+.zoom-img {
+    overflow: hidden;
+  }
+  
+  .zoom-img img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: all .3s ease;
+  }
+  
+  .zoom-img img:hover {
+    transform: scale(1.2);
+  }
+  .plus_btn , .minus_btn{
+    background-color: #f68b1e;
+    color: white;
+  }
+  .add_btn{
+    border: #f68b1e 1px solid;
+  }
+  .add_btn:hover{
+    border: #f68b1e;
+    background-color: #f68b1e;
+  }
+  .product_title{
+    color: black;
+  }

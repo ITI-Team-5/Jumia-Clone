@@ -1,0 +1,10 @@
+a{
+    transition: all 1s;
+}
+a:hover{
+    transform:rotate(360deg);
+    transform:translate(360deg);
+}
+.headers{
+    color: #f49719;
+}

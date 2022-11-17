@@ -1,0 +1,19 @@
+body{
+    font-family: Poppins, sans-serif;
+}
+.two, .three
+{
+    border-radius: 5px;
+    background-color: white;
+    padding: 0%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.txt_header{
+    color: white;
+    padding: 10px 0px;
+    text-transform: capitalize;
+    font-size: 25px;
+}
