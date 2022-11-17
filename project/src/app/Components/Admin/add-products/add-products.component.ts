@@ -18,7 +18,7 @@ export class AddProductsComponent implements OnInit {
       title: ['',[Validators.required]],
       SKU: ['',[Validators.required,Validators.maxLength(10)]],
       image:null,
-      price: [0,[Validators.required]],
+      price: [0,[Validators.required,Validators.max(15)]],
       details: ['',[Validators.required]],
       discount:null
     })
