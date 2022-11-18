@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -53,6 +54,13 @@ Route::post("products",[ProductController::class,'store']);
 Route::get('/products/{product}/edit',[ProductController::class,'edit']);
 Route::post('/products/{product}',[ProductController::class,'update']);
 Route::delete('/products/{product}',[ProductController::class,'destroy']);
+
+//categories
+
+Route::get("categories",[CategoryController::class,'allcategories']);
+Route::get("categories/{category}",[CategoryController::class,'showcategory']);
+
+
 
 
 //Profile
