@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from'rxjs';
+import { BehaviorSubject, Subject } from'rxjs';
 import { data } from 'jquery';
 
 @Injectable({
@@ -8,6 +8,14 @@ import { data } from 'jquery';
 })
 export class ServicesService {
   constructor(private myClient:HttpClient) { }
+
+// sharing data with service
+private product$ = new BehaviorSubject<any>({});
+  selectedProduct$ = this.product$.asObservable();
+  setProduct(product: any) {
+    this.product$.next(product);
+  }
+
 
 
 
@@ -24,8 +32,15 @@ getDiscounts(){
   return this.myClient.get(this.discount);
 }
 
+
+
 getAllCategories(){
-return this.myClient.get(this.cat);
+  let lang=localStorage.getItem('lang')||'en';
+
+  const header=new HttpHeaders({
+  'Accept-Language': lang
+  });
+return this.myClient.get(this.cat,{headers:header});
 }
 getCatId(id:any){
   return this.myClient.get(`${this.cat}/${id}`)
@@ -50,7 +65,12 @@ insertOrder(order:any){
 
 
 getAllProd(){
-  return this.myClient.get(this.url)
+  let lang=localStorage.getItem('lang')||'en';
+
+  const header=new HttpHeaders({
+  'Accept-Language': lang
+  });
+  return this.myClient.get(this.url,{headers:header})
 }
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)

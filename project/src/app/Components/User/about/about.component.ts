@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
   selector: 'app-about',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  mytest: string;
 
-  constructor() { }
+  constructor(private myservice:ServicesService) { }
 
   ngOnInit(): void {
   }
-
+  // test()
+  // {
+  //   this.mytest='hello service from about';
+  //   this.myservice.setProduct(this.mytest);
+  // }
 }
