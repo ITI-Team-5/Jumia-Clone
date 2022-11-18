@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   LoggedInAdmin: any;
   categories: any;
 
-  constructor(private myService: ServicesService, private _route:Router ) { }
+  constructor(private myService: ServicesService,private router:Router) { }
   products:any
   title:any
   imgsrc:any
