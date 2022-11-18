@@ -26,6 +26,7 @@ lang:string;
     // for translation
     this.trans.setDefaultLang('en');
     this.trans.use(localStorage.getItem('lang')||'en')
+    
     }
 
   ngOnInit(): void {
