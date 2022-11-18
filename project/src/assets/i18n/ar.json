@@ -1,4 +1,10 @@
 {
+    "Ahmed Faisal":"أحمد فيصل",
+    "Marwa Abdullah":"مروة عبدالله",
+    "Ahmed Magdy":"أحمد مجدي",
+    "Team Leader":"قائد الفريق",
+    "Omar Shahawy":"عمر شهاوي",
+    "Hagar Hassan":"هاجر حسن",
     "Home":"الرئيسية",
     "About":"عننا",
     "Contact":"إتصل بنا",
@@ -35,7 +41,38 @@
     "Team Five was established for the first time in September 2022 at ITI organization in Egypt We have a lot of passion to build Professional websites you are browsing one of our clones We hope you like it":"فريق المغامرون الخمسة تم تأسيسه لأول مره في شهر سبتمبر 2022 في معهد الاتصالات وتكنولوجيا المعلومات في مصر ولدينا كثير من الشغف لبناء مواقع إحترافية والتي تتصفح احدها الآن نرجو أن ينال إعجابكم",
     "Alexandria,Egypt":"الإسكندرية ,مصر",
     "Latest Products":"أحدث المنتجات",
-    "Products Offers":"آخر العروض"
+    "Products Offers":"آخر العروض",
+    "Category":"الصنف",
+    "Add Product":"إضافة منتج",
+    "Product Name is required":"إسم المنتج مطلوب",
+    "required and 10 chars max":" مطلوب بحد 10 حروف على الاكثر",
+    "price required":"السعر مطلوب",
+    "Discount":"الخَصم",
+    "Details are required":"تفاصيل المنتج مطلوبة",
+    "Add":"أضف",
+    "About Us":"عننا",
+    "Our history":"تاريخنا",
+    "Jumia Egypt's no. 1 online mall was established in July 2012 with the aim and vision to become the one-stop shop in Egypt with implementation of best practices both online and offline.":"جوميا هي متجر التسوق الالكتروني رقم واحد في مصر , تم تأسيسها يوليو 2012 بهدف ورؤية أن تكون محطة واحده للتسوق في مصر بأفضل طرق التنفيذ وتفعيل الخدمات الالكترونية و على أرض الواقع",
+    "Jumia is the largest online mall store in Egypt.":"جوميا تعتبر أكبر متجر إلكتروني في مصر",
+    "At inception we did an average delivery time of a week, today we do, on average, delivery in 1-5 days.":"في البداية ، كان متوسط ​​وقت التسليم أسبوعًا ، واليوم نقوم بالتسليم في المتوسط ​​في 1-5 أيام",
+    "Initially starting with 3 employees, Jumia presently has a staff strength of 350 young and entrepreneurial Egyptians":"بدأت جوميا في البداية بثلاثة موظفين ، ولديها حاليًا 350 موظفًا مصريًا شابًا ورياديًا",
+    "Deliveries to all Cities in Egypt.":"التوصيل متاح لكل محافظات مصر",
+    "Meet the Team":"تعرف على الفريق",
+    "Full Stack Developer Using PHP Laravel, Angular":"مطور مواقع إنترنت باستخدام PHP , Angular",
+    "Shopping Cart":"عربة التسوق",
+    "items":"العناصر",
+    "Clear Cart Items":"إخلاء العربة",
+    "Back to Shop":"العودة للتسوق",
+    "Summary":"فاتورة",
+    "ITEMS":"العناصر",
+    "SHIPPING":"الشحن",
+    "CHECKOUT":"الحساب",
+    "GIVE CODE":"ادخل كوبون",
+    "Standard-Delivery":"مصاريف الشحن",
+    "Enter your code":"أدخل الكوبون",
+    "TOTAL PRICE":"السعر الكلي"
+
+
 
 
 }

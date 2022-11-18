@@ -52,14 +52,14 @@
 <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-6">
         <select (change)="onSortDirection()" [(ngModel)]='SortbyParam' class="form-control">
-        <option disabled value="">sort by price</option>
-      <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">High to Low</option>
-        <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">Low to High</option>
+        <option disabled value="">{{'Sort by Price'|translate}}</option>
+      <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">{{'High to Low'|translate}}</option>
+        <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">{{'Low to High'|translate}}</option>
         </select>
 
         </div> 
         <div class="col-xl-4 col-lg-4 col-md-6 col-6">
-        <input type="search" name="search" placeholder="search by name" (input)="search()" [(ngModel)]="title" id="" class="form-control">
+        <input type="search" name="search" placeholder="{{'search by name'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="form-control">
         </div>
 </div>
 </section>

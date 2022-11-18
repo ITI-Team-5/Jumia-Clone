@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from'rxjs';
+import { BehaviorSubject, Subject } from'rxjs';
 import { data } from 'jquery';
 
 @Injectable({
@@ -8,6 +8,14 @@ import { data } from 'jquery';
 })
 export class ServicesService {
   constructor(private myClient:HttpClient) { }
+
+// sharing data with service
+private product$ = new BehaviorSubject<any>({});
+  selectedProduct$ = this.product$.asObservable();
+  setProduct(product: any) {
+    this.product$.next(product);
+  }
+
 
 
 

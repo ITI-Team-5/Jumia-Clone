@@ -1,17 +1,17 @@
 <app-header></app-header>
 <div class="p-3 col-xl-4 col-lg-4 col-6 col-md-6 search container">
-  <input type="search" name="search" placeholder="search" (input)="search()" [(ngModel)]="title" id="" class="form-control">
+  <input type="search" name="search" placeholder="{{'Search'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="form-control">
 </div>
 <div class="container-fluid">
 <table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
 <thead>
   <tr class="text-primary" style="border:2px solid rgb(195, 195, 195);">
     <th>#</th>
-    <th>Title</th>
-    <th>Image</th>
-    <th>Price</th>
-    <th>Detils</th>
-    <th>Actions</th>
+    <th>{{'Title'|translate}}</th>
+    <th>{{'Image'|translate}}</th>
+    <th>{{'Price'|translate}}</th>
+    <th>{{'Details'|translate}}</th>
+    <th>{{'Actions'|translate}}</th>
   </tr>
 </thead>
 <tbody>
