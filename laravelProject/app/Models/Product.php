@@ -18,7 +18,8 @@ class Product extends Model
         'quantity',
         'image',
         'price',
-        'discount'
+        'discount',
+        'cat_id'
     ];
     public function sluggable(): array
     {
@@ -31,4 +32,7 @@ class Product extends Model
     public function productorder(){
         return $this->hasMany(Product_Order::class);
     }
+    public function categories(){
+        return  $this->belongsTo(Category::class);
+      }
 }

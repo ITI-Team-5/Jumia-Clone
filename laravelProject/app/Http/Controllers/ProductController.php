@@ -44,7 +44,8 @@ class ProductController extends Controller
                 'details' => $data['details'],
                 'image' =>$profileImage,
                 'price' => $data['price'],
-                'discount'=>$data['discount']
+                'discount'=>$data['discount'],
+                'cat_id'=>$data['cat_id']
             ]);
         }
         else{
@@ -56,7 +57,9 @@ class ProductController extends Controller
                 'details' => $data['details'],
                 // 'image' =>$profileImage,
                 'price' => $data['price'],
-                'discount'=>$data['discount']
+                'discount'=>$data['discount'],
+                'cat_id'=>$data['cat_id']
+
             ]);
         }
 
@@ -92,7 +95,9 @@ class ProductController extends Controller
             'details' => $request->details,
             'image' => $profileImage,
             'price' => $request->price,
-            'discount'=>$request->discount
+            'discount'=>$request->discount,
+            'cat_id'=>$request->cat_id
+
 
         ]);
 
@@ -103,7 +108,9 @@ class ProductController extends Controller
                 'SKU' => $request->SKU,
                 'details' => $request->details,
                 'price' => $request->price,
-                'discount'=>$request->discount
+                'discount'=>$request->discount,
+                'cat_id'=>$request->cat_id
+
         ]);
         //  return dd($request);
         }
