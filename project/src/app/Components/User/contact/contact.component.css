@@ -1,7 +1,4 @@
-.breadcrumb{
-    background:linear-gradient(to right ,
-    rgba(255,0,0,0.8),rgb(0,0,0,0.5),rgba(0,0,0,1))
-}
+
 input[type=text], select, textarea{
     width: 100%;
     padding: 12px;
@@ -71,3 +68,16 @@ input[type=email], select, textarea{
       margin-top: 0;
     }
   }
+  .txt_head{
+    color:#f68b1e
+  }
+  .custom_txt{
+    background-color: #ffab1a;
+    color: white;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+
+}

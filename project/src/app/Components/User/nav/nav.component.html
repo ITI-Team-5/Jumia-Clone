@@ -2,6 +2,18 @@
 
 <nav class="navbar navbar-expand-lg custom_nav  bg-white position-sticky">
   <div class="container">
+
+    <li style="list-style:none;" class="nav-item dropdown text-white p-1">     
+      <select (change)="changelang(lang.value)" #lang class="custom-select">
+        <option  class="dropdown-item" value="ar" >--</option>
+        <!-- <option  class="dropdown-item" value="en" [selected]="lang=='en'">English</option> -->
+        <option  class="dropdown-item" value="ar" >ع</option>
+        <option  class="dropdown-item" value="de">De</option>
+        <option  class="dropdown-item" value="fr">Fr</option>
+        <option  class="dropdown-item" value="en" >En</option>
+      </select>
+    </li>
+
     <a class="navbar-brand" href="#">
       <img src="../../../../assets/images/JumiaLogo_(14).png" alt="sorry can't found" width="170" height="30" class="d-inline-block align-text-top">
     </a>
@@ -11,8 +23,9 @@
     <div class="collapse navbar-collapse content justify-content-around" id="navbarSupportedContent">
          <div class="row  justify-content-around">
           <form (ngSubmit)="search(searchs.value)" class="d-flex col-8">
-            <input class="form-control me-2 search_input" type="search" placeholder="Search" #searchs aria-label="Search">
-            <button class="btn search_btn" type="submit">Search</button>
+            <input class="form-control me-2 search_input" type="search" placeholder="{{'Search'|translate}}" #searchs aria-label="Search">
+            <button class="btn search_btn" type="submit">{{'Search'|translate}}</button>
+
           </form>
     
           <div class="collapse navbar-collapse col-4 row justify-content-around" id="navbarSupportedContent">
@@ -26,8 +39,8 @@
                     <li><a class="dropdown-item" href="/login" *ngIf="!isLoggedIn" >login</a></li>
                     <li><a class="dropdown-item" href="/signup" *ngIf="!isLoggedIn">signup</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a *ngIf="isLoggedIn && !flag" class="dropdown-item" href="/profiles"> profile </a></li>
-                    <li><a href=""  class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> logout</a></li>
+                    <li><a *ngIf="isLoggedIn && !flag" class="dropdown-item" href="/profiles"> {{"profile" | translate}}  </a></li>
+                    <li><a href=""  class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> {{"logout" | translate}}</a></li>
                   </ul>
                 </li>
               <li  class="nav-item">
@@ -37,10 +50,13 @@
             </div>
             
             <div class="cart col-5 justify-content-end ">
-              <a class="nav-link " href="/cart" tabindex="-1"><i class="fa fa-shopping-cart"></i>  Cart
+              <a class="nav-link " href="/cart" tabindex="-1"><i class="fa fa-shopping-cart"></i>   {{'Cart'|translate}}
                 <span class="cartNum badge  badge-secondary bg-warning rounded-circle"  > {{cartItem}}</span>
+
                </a>
             </div>
+
+         
           </div>
          </div>
         

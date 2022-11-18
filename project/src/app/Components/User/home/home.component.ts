@@ -9,6 +9,8 @@ import { ServicesService } from '../../Admin/Services/services.service';
 export class HomeComponent implements OnInit {
   LoggedInAdmin: any;
 
+  selectedProduct: any;
+
   constructor(private myservice:ServicesService) { }
   navItem:any;
   SortbyParam = '';
@@ -22,10 +24,20 @@ export class HomeComponent implements OnInit {
  users:any[]=[];
 
  
+ 
 
   ngOnInit(): void {
+      // test sharing data
+    // this.myservice.selectedProduct$.subscribe((value) => {
+    //   this.selectedProduct = JSON.parse(value)
+     
+    //     console.log(value[0]+'xyz') 
+    // });
+
      this.getdata();
      this.LoggedInAdmin = localStorage.getItem("UserId")
+
+
 
    }
 

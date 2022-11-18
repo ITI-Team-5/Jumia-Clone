@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { data } from 'jquery';
 import { HttpHeaders } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -19,13 +20,22 @@ Result:any;
 products:any[]=[];
 page:number = 1;
 total:number = 0;
-constructor( public myservice: ServicesService ,private route: ActivatedRoute ) { 
+lang:string;
+  constructor( private trans:TranslateService,public myservice: ServicesService ,private route: ActivatedRoute ) { 
+
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
     })
+
+    // for translation
+    this.trans.setDefaultLang('en');
+    this.trans.use(localStorage.getItem('lang')||'en')
+    
     }
 
   ngOnInit(): void {
+    this.lang=localStorage.getItem('lang')||'en';
+
     this.LoggedInAdmin = localStorage.getItem("role")
     this.isLoggedIn = localStorage.getItem("token");
     this.name = localStorage.getItem("name");
@@ -33,6 +43,13 @@ constructor( public myservice: ServicesService ,private route: ActivatedRoute ) 
       this.products = response.data;
       this.total = response.total;
     })
+
+    this.CartItemFun()
+    if(!this.cartItem){
+      this.cartItem = 0 ;
+    }
+
+    
   }
 
   logout(){
@@ -66,7 +83,12 @@ constructor( public myservice: ServicesService ,private route: ActivatedRoute ) 
   }
 
 
-
+  changelang(lang)
+  {
+    console.log(lang);
+    localStorage.setItem('lang',lang);
+    window.location.reload()
+  }
   
 
 

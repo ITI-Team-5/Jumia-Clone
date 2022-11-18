@@ -16,7 +16,7 @@ class UserController extends Controller
     public function registerNewUser(StoreUserRequest  $request)
     {
 
-         $request->validated();
+          $request->validated();
         $newUser = User::create([
             'name' => request()->name,
             'email' => request()->email,
@@ -24,10 +24,13 @@ class UserController extends Controller
             'phone' =>  request()->phone,
             'address' =>  request()->address,
             'accept' => request()->accept,
+            'role' => 'user',
         ]);
         return $newUser;
 
     }
+
+    //login
     public function login(Request $request){
 
         $request->validate([

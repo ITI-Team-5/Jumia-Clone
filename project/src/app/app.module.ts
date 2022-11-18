@@ -7,7 +7,7 @@ import { ProductsComponent } from './Components/Admin/products/products.componen
 import { AddProductsComponent } from './Components/Admin/add-products/add-products.component';
 import { ErrorComponent } from './Components/Admin/error/error.component';
 import { ServicesService } from './Components/Admin/Services/services.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductsComponent } from './Components/Admin/update-products/update-products.component';
 
@@ -43,7 +43,12 @@ import { CategoriesComponent } from './Components/User/categories/categories.com
 import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
 import { SearchProductComponent } from './Components/User/search-product/search-product.component';
 
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -92,6 +97,14 @@ import { SearchProductComponent } from './Components/User/search-product/search-
     NgxPaginationModule,
     CarouselModule,
     QuillModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
+    
   
   ],
   providers: [

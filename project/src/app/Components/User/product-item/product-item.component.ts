@@ -22,7 +22,10 @@ export class ProductItemComponent implements OnInit {
    @Input() product:any={};
    @Output() item=new EventEmitter()
     ngOnInit(): void {
-  //  this.CartItemFun(this.cartNum)
+   this.CartItemFun(this.cartItem)
+    if(!this.cartItem ){
+       this.cartItem = 0;
+    }
   }
 
   plus()
