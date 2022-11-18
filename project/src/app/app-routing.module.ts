@@ -21,6 +21,7 @@ import { PolicyComponent } from './Components/User/policy/policy.component';
 import { UserGuard } from './Components/Admin/user.guard';
 import { AdminGuard } from './Components/Admin/admin.guard';
 import { DiscountsComponent } from './Components/User/discounts/discounts.component';
+import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path:"products/discounts",
     component:DiscountsComponent,
+    canActivate:[UserGuard]
+  },
+  {
+    path:"category/:id",
+    component:CategoriesDetailsComponent,
     canActivate:[UserGuard]
   },
   {

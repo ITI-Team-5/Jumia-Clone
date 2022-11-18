@@ -10,8 +10,8 @@
     </button>
     <div class="collapse navbar-collapse content justify-content-around" id="navbarSupportedContent">
          <div class="row  justify-content-around">
-          <form class="d-flex col-8">
-            <input class="form-control me-2 search_input" type="search" placeholder="Search" aria-label="Search" (input)="search()" [(ngModel)]="title">
+          <form class="d-flex col-8" (ngSubmit)="search()">
+            <input class="form-control me-2 search_input" type="search" placeholder="Search" name="search" aria-label="Search"  [(ngModel)]="title">
             <button class="btn search_btn "  type="submit">Search</button>
           </form>
     

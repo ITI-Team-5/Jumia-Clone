@@ -74,7 +74,6 @@ export class ProductDetailsComponent implements OnInit {
       localStorage.setItem('cart',JSON.stringify(this.productsInCart) )
     }
 
-    window.location.href='/'
 
   }
 
