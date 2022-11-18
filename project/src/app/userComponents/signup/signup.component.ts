@@ -54,7 +54,9 @@ export class SignupComponent implements OnInit {
   AddUserForm = new FormGroup ({
     name: new FormControl('',[Validators.required, Validators.minLength(3)]), 
     email: new FormControl('',[Validators.email, Validators.required]),
-    password: new FormControl('',[Validators.min(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.required]),
+    password: new FormControl('',[Validators.min(8),Validators.required]),
+
+    // password: new FormControl('',[Validators.min(8),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),Validators.required]),
     phone: new FormControl('',[Validators.required,Validators.minLength(10)]),
     address: new FormControl('',Validators.required),
     accept: new FormControl('',Validators.required)
