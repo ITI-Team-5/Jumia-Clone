@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
 
     public function index(){
-        return Product::orderBy('id', 'desc')->paginate(12);
+        return DB::table('products as p')->join('categories as c','p.cat_id', '=' , 'c.id')->select('p.title as product_title','c.cat_title as cat_title','image','price','details','p.id as id','discount')->orderBy('p.id', 'desc')->paginate(12);
     }
 
     public function show($productId){
@@ -26,6 +26,10 @@ class ProductController extends Controller
 
     public function discounts(){
          return Product::where('discount','!=','0')->get();
+    }
+
+    public function search($title){
+        return Product::where('title','like','%'.$title.'%')->get();
     }
 
     public function store(ProductsRequest $request)

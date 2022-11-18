@@ -11,6 +11,7 @@ import { data } from 'jquery';
 })
 export class ProductsComponent implements OnInit {
   LoggedInAdmin: any;
+  categories: any;
 
   constructor(private myService: ServicesService, private _route:Router ) { }
   products:any
@@ -19,10 +20,16 @@ export class ProductsComponent implements OnInit {
   page:number = 1;
   total:number = 0;
   ngOnInit(): void {
+   this.getProducts();
+    this.getcategories();
    
-    this.getProducts();
-    
  
+  }
+  getcategories(){
+    this.myService.getAllCategories().subscribe(data=>{
+      this.categories = data;
+      console.log(data);
+    })
   }
   getProducts(){
   this.myService.getAllProducts(this.page).subscribe((response:any)=>{

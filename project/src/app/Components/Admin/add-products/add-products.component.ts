@@ -10,7 +10,7 @@ import { data } from 'jquery';
   styleUrls: ['./add-products.component.css']
 })
 export class AddProductsComponent implements OnInit {
-
+  categories:any;
   form :FormGroup;
   constructor(public fb:FormBuilder,public myService: ServicesService,private _route:Router)
    {
@@ -55,6 +55,11 @@ export class AddProductsComponent implements OnInit {
   //     window.location.href = "/";
 
   //   }
+  this.myService.getAllCategories().subscribe(data=>{
+  this.categories = data;
+  console.log(data);
+  })
+
   }
  
 

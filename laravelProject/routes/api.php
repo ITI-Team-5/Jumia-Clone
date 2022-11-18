@@ -60,6 +60,7 @@ Route::delete('/products/{product}',[ProductController::class,'destroy']);
 Route::get("categories",[CategoryController::class,'allcategories']);
 Route::get("categories/{category}",[CategoryController::class,'showcategory']);
 
+Route::get("searches/{search}",[ProductController::class,'search']);
 
 
 
