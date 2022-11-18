@@ -24,8 +24,15 @@ getDiscounts(){
   return this.myClient.get(this.discount);
 }
 
+
+
 getAllCategories(){
-return this.myClient.get(this.cat);
+  let lang=localStorage.getItem('lang')||'en';
+
+  const header=new HttpHeaders({
+  'Accept-Language': lang
+  });
+return this.myClient.get(this.cat,{headers:header});
 }
 getCatId(id:any){
   return this.myClient.get(`${this.cat}/${id}`)
@@ -50,7 +57,12 @@ insertOrder(order:any){
 
 
 getAllProd(){
-  return this.myClient.get(this.url)
+  let lang=localStorage.getItem('lang')||'en';
+
+  const header=new HttpHeaders({
+  'Accept-Language': lang
+  });
+  return this.myClient.get(this.url,{headers:header})
 }
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)

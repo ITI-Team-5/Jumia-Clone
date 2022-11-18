@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { data } from 'jquery';
 import { HttpHeaders } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -16,13 +17,20 @@ name:any;
 cartItem: any ;
 title:any;
 products:any[]=[];
-  constructor( public myservice: ServicesService ,private route: ActivatedRoute ) { 
+lang:string;
+  constructor( private trans:TranslateService,public myservice: ServicesService ,private route: ActivatedRoute ) { 
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
     })
+
+    // for translation
+    this.trans.setDefaultLang('en');
+    this.trans.use(localStorage.getItem('lang')||'en')
     }
 
   ngOnInit(): void {
+    this.lang=localStorage.getItem('lang')||'en';
+
     this.LoggedInAdmin = localStorage.getItem("role")
     this.isLoggedIn = localStorage.getItem("token");
     this.name = localStorage.getItem("name");
@@ -66,6 +74,13 @@ products:any[]=[];
     this.ngOnInit()
   }
     console.log(this.title.toLocaleLowerCase())
+  }
+
+  changelang(lang)
+  {
+    console.log(lang);
+    localStorage.setItem('lang',lang);
+    window.location.reload()
   }
   
 }
