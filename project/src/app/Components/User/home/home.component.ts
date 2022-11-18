@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ServicesService } from '../../Admin/Services/services.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   LoggedInAdmin: any;
 
   constructor(private myservice:ServicesService) { }
+  navItem:any;
   SortbyParam = '';
   SortDirection = 'asc'; 
   products:any[]=[];
@@ -39,16 +40,7 @@ export class HomeComponent implements OnInit {
     this.page = event;
     this.getdata();
 }
-  search(){
-    if(this.title !=""){
-      this.products = this.products.filter((res:any)=>{
-        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
-      })
-  }else{
-    this.ngOnInit()
-  }
-    console.log(this.title.toLocaleLowerCase())
-  }
+
   addtocart(event:any){
 
     if("cart" in localStorage)

@@ -8,9 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'project';
   LoggedInAdmin: any;
+  navItem: any;
   constructor(){
     this.LoggedInAdmin = localStorage.getItem("role")    
   }
-
+  GetData(data:any){
+    this.navItem = data;
+   // console.log(data);
+    }
 }
 

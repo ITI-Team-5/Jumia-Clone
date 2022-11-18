@@ -19,6 +19,11 @@ private logout  = "http://localhost:8000/api/logout"
 private profile  = "http://localhost:8000/api/profiles"
 private discount = "http://localhost:8000/api/products/discounts"
 private cat = "http://localhost:8000/api/categories"
+private search = "http://localhost:8000/api/searches"
+ 
+
+
+
 
 getDiscounts(){
   return this.myClient.get(this.discount);
@@ -87,6 +92,12 @@ getAllUsers(){
 getUserById(Id :any){
   return this.myClient.get(`${this.signup}/${Id}`)
 }
+
+searchbyTitle(title:any){
+  return this.myClient.get(`${this.search}/${title}`)
+
+}
+
 
 
 getProfile(){

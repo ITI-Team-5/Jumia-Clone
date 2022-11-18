@@ -41,6 +41,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DiscountsComponent } from './Components/User/discounts/discounts.component';
 import { CategoriesComponent } from './Components/User/categories/categories.component';
 import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
+import { SearchProductComponent } from './Components/User/search-product/search-product.component';
 
 
 
@@ -77,6 +78,7 @@ import { CategoriesDetailsComponent } from './Components/User/categories-details
     DiscountsComponent,
         CategoriesComponent,
         CategoriesDetailsComponent,
+        SearchProductComponent,
     
     
     

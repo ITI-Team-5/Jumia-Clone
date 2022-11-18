@@ -22,6 +22,7 @@ import { UserGuard } from './Components/Admin/user.guard';
 import { AdminGuard } from './Components/Admin/admin.guard';
 import { DiscountsComponent } from './Components/User/discounts/discounts.component';
 import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
+import { SearchProductComponent } from './Components/User/search-product/search-product.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
   {
     path:"Products",
     component:ProductsComponent,
+    canActivate:[UserGuard]
+  },
+  {
+    path:"searches/:title",
+    component:SearchProductComponent,
     canActivate:[UserGuard]
   },
   {
