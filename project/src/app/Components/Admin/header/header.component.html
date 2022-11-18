@@ -1,6 +1,16 @@
 <header class="w-100 bg-dark">
   <nav class="navbar container navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
+      <li style="list-style:none;" class="nav-item dropdown text-white p-1">     
+        <select (change)="changelang(lang.value)" #lang class="custom-select">
+          <option  class="dropdown-item" value="ar" >--</option>
+          <!-- <option  class="dropdown-item" value="en" [selected]="lang=='en'">English</option> -->
+          <option  class="dropdown-item" value="ar" >ع</option>
+          <option  class="dropdown-item" value="de">De</option>
+          <option  class="dropdown-item" value="fr">Fr</option>
+          <option  class="dropdown-item" value="en" >En</option>
+        </select>
+      </li>
       <a class="navbar-brand" href="/">Team5</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,7 +30,7 @@
           <i class="text-secondary fa fa-user"></i> {{name}}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a href="/login" class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> logout</a></li>
+          <li><a href="/login" class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> {{'logout'|translate}}</a></li>
         </ul>
       </li>
     </div>

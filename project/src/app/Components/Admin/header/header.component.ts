@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -10,9 +11,18 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: any;
-  constructor( private _route:Router ) { }
+  lang:string;
+
+  constructor( private _route:Router,private trans:TranslateService ) { 
+
+    // for translation
+    this.trans.setDefaultLang('en');
+    this.trans.use(localStorage.getItem('lang')||'en')
+  }
   name:any;
   ngOnInit(): void {
+    this.lang=localStorage.getItem('lang')||'en';
+
     this.isLoggedIn = localStorage.getItem("token");
     this.name = localStorage.getItem('name');  }
 
@@ -21,5 +31,10 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.href= "/login"
   } 
- 
+  changelang(lang)
+  {
+    console.log(lang);
+    localStorage.setItem('lang',lang);
+    window.location.reload()
+  }
 }
