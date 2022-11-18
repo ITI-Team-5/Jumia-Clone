@@ -1,0 +1,61 @@
+
+<section class=" one mb-5 mt-4 container">
+        <div class="row">
+                <div class="left col-3">
+                        <!-- category section is here  -->
+                </div>
+                <div class="right col-9">
+                        <img style="height: 300px; width: 100%;" src="../../../../assets/images/jumiabanner2.jpg" alt="sorry not found" class="">
+                </div>
+        </div>
+</section>
+<section class=" two container text-center mt-5 mb-5">
+        <p class="bg-dark txt_header w-100 mb-2"> Latest products</p>
+        <app-latest></app-latest>
+</section>
+
+<section class="three container text-center mt-5 mb-5">
+        <p class="bg-dark txt_header w-100 mb-2"> Offers of products</p>
+        <app-discount-slider></app-discount-slider>
+</section>
+
+<section class=" four container mt-5 mb-5">
+        <h4>Our Products</h4>
+</section>
+
+<section class="container mt-5 mb-5">
+<div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-6">
+        <select (change)="onSortDirection()" [(ngModel)]='SortbyParam' class="form-control">
+        <option disabled value="">sort by price</option>
+      <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">High to Low</option>
+        <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">Low to High</option>
+        </select>
+
+        </div> 
+        <div class="col-xl-4 col-lg-4 col-md-6 col-6">
+        <input type="search" name="search" placeholder="search by name" (input)="search()" [(ngModel)]="title" id="" class="form-control">
+        </div>
+</div>
+</section>
+
+<section class="container" >
+        
+<div class="row">
+        <!-- <div class="col-4"> -->
+
+<div class="col-xl-4 col-lg-6 col-md-12 col-12 p-2" *ngFor="let product of products |  paginate: { itemsPerPage: 12, currentPage: page, totalItems: total } |sort:[SortbyParam,SortDirection]">
+        <app-product-item  [product]="product" (item)="addtocart($event)"></app-product-item>
+        </div>
+</div>
+<!-- </div> -->
+</section>
+<pagination-controls class="text-center" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
+
+
+
+
+
+
+

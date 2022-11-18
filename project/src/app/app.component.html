@@ -1,0 +1,8 @@
+<app-offers></app-offers>
+<!-- <app-header></app-header> -->
+<app-nav *ngIf="LoggedInAdmin == 'user'"></app-nav>
+
+
+<router-outlet></router-outlet> 
+
+<app-footer *ngIf="LoggedInAdmin == 'user'"></app-footer>

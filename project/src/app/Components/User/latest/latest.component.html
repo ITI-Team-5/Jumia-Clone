@@ -1,0 +1,10 @@
+<owl-carousel-o [options]="customOptions">
+    <ng-template *ngFor="let p of products"  carouselSlide>
+        <a routerLink="product/{{p.id}}"> <img width="200" height="200" src="{{imgsrc}}/{{p.image}}" alt="">
+            </a>
+        <h5 style="text-align:left;text-transform:capitalize">{{p.title}}</h5>
+        <p class="text-danger" style="text-align:left;color:#000;font-size:20px;">EGP {{p.price}}</p>
+
+    </ng-template>  
+     
+  </owl-carousel-o>
