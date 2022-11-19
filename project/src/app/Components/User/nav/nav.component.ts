@@ -4,6 +4,12 @@ import { ServicesService } from 'src/app/Components/Admin/Services/services.serv
 import { data } from 'jquery';
 import { HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
+import {
+  SocialAuthService,
+  GoogleLoginProvider,
+  SocialUser,
+  FacebookLoginProvider,
+} from '@abacritt/angularx-social-login';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -18,7 +24,11 @@ cartItem: any ;
 title:any;
 products:any[]=[];
 lang:string;
-  constructor( private trans:TranslateService,public myservice: ServicesService ,private route: ActivatedRoute ) { 
+
+//google
+user: SocialUser;
+loggedIn: boolean;
+  constructor(  private socialAuthService: SocialAuthService ,private trans:TranslateService,public myservice: ServicesService ,private route: ActivatedRoute ) { 
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
     })
@@ -30,6 +40,13 @@ lang:string;
     }
 
   ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      // console.log('el user ahooo'+this.user.name)
+     
+    });
+
     this.lang=localStorage.getItem('lang')||'en';
 
     this.LoggedInAdmin = localStorage.getItem("role")
@@ -49,6 +66,8 @@ lang:string;
     localStorage.removeItem("role");
     localStorage.removeItem("name");
     localStorage.removeItem("UserId");
+     this.socialAuthService.signOut();
+
     window.location.href= "/login"
   } 
  

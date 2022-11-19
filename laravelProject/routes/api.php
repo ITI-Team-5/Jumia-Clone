@@ -44,6 +44,9 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
   });
 Route::post('/sanctum/token', [UserController::class,'login']);
 
+// google api
+Route::post("/signupWithGoogle", [UserController::class, 'RegisterByGoogle']);
+
 
 //products
 Route::get("products",[ProductController::class,'index']);

@@ -45,6 +45,14 @@ import { CategoriesDetailsComponent } from './Components/User/categories-details
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  SocialAuthService,
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from '@abacritt/angularx-social-login';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -80,8 +88,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LatestComponent,
   
     DiscountsComponent,
-        CategoriesComponent,
-        CategoriesDetailsComponent,
+    CategoriesComponent,
+    CategoriesDetailsComponent,
     
     
     
@@ -95,6 +103,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxPaginationModule,
     CarouselModule,
     QuillModule.forRoot(),
+    SocialLoginModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -107,7 +116,28 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ServicesService,
-    UsersService
+    UsersService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '700689474666-g6c9rtoqgm6mtu9dpgkjfpcc3jahnm0b.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('542086661069401')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })
