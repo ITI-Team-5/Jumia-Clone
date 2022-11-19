@@ -16,16 +16,19 @@ export class ProductItemComponent implements OnInit {
   constructor(private myservice:ServicesService, private route: ActivatedRoute) { 
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
+      if(!this.cartItem ){
+        this.cartItem = 0;
+     }
     })
   }
    quantity:number=1;
    @Input() product:any={};
    @Output() item=new EventEmitter()
     ngOnInit(): void {
-   this.CartItemFun(this.cartItem)
-    if(!this.cartItem ){
-       this.cartItem = 0;
-    }
+      this.CartItemFun(this.cartItem)
+      if(!this.cartItem ){
+        this.cartItem = 0;
+     }
   }
 
   plus()
