@@ -2,8 +2,8 @@
   <nav class="navbar container navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <li style="list-style:none;" class="nav-item dropdown text-white p-1">     
-        <select (change)="changelang(lang.value)" #lang class="custom-select">
-          <option  class="dropdown-item" value="ar" >--</option>
+        <select (change)="changelang(lang.value)" #lang class="custom-select form-control">
+          <option  class="dropdown-item" value="ar" >{{'choose language'|translate}}</option>
           <!-- <option  class="dropdown-item" value="en" [selected]="lang=='en'">English</option> -->
           <option  class="dropdown-item" value="ar" >ع</option>
           <option  class="dropdown-item" value="de">De</option>
