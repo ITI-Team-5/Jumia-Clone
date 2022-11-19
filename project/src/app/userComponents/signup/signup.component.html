@@ -1,61 +1,74 @@
-<section class="bg-light d-flex justify-content-center align-items-center">
-      <div class="card custom-card mt-2 mb-5">
-        <div class="text-center">
-          <h1>Sign Up</h1>
-          <h6>Register Yourself!</h6>
-        </div>
+<div class="content-container container mt-3 ">
+  <div class="row">
+
+
+    <!-- <button class="btn btn-primary" (click)="signInWithFB()">login with FB</button> -->
+
+    <div class="logo">
+      <img src="../../../assets/images/jumiaicon.png" alt="logo not found" class="">
+    </div>
+    <div class="text text-center">
+      <h4>What's your email address?</h4>
+      <p>Type your email to log in or create a Jumia account.</p>
+    </div>
           <form [formGroup]="AddUserForm" (ngSubmit)="addUser()">
-            <div class="mb-2">
-              <label for="exampleInputName1" class="form-label">Your Name</label>
-              <input  formControlName="name" type="text" class="form-control" id="exampleInputName1" aria-describedby="emailHelp">
+            <div class="text-center">
+              <label for="exampleInputEmail1" class="form-label" style="color: #f68b1e;">Name</label>
+              <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
               <div *ngIf="AddUserForm.controls['name'].invalid && (AddUserForm.controls['name'].dirty || AddUserForm.controls['name'].touched)" id="emailHelp" class="form-text">
                 <p  class="alert alert-danger">* Name Required and more than  3 characters</p>
               </div>
               
-            </div>
             
-            <div class="mb-2">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input formControlName="email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div class="text-center">
+                <label for="exampleInputEmail1" class="form-label" style="color: #f68b1e;">Email address</label>
+                <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
               <div *ngIf="AddUserForm.controls['email'].invalid && (AddUserForm.controls['email'].dirty || AddUserForm.controls['email'].touched)" id="emailHelp" class="form-text">
                 <p class="alert alert-danger">* email should contains @ .com</p>
               </div>
-            </div>
             
-            <div class="mb-2 position-relative">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input formControlName="password" [type]="changetype?'password':'text'" class="form-control" id="exampleInputPassword1">
-              <span class="eye-icon" (click)="showpassword()" style="color:black; position:absolute;right:15px;top:50px;z-index: 10">
-                <i style="cursor:pointer;"  [ngClass]="visible?'fa fa-eye': 'fa fa-eye-slash'"></i>
-                </span>
+              <div class=" text-center mb-4 position-relative">
+                <label for="exampleInputPassword1" class="form-label" style="color: #f68b1e;">Password</label>
+                <input formControlName="password" [type]="changetype?'password':'text'" type="password" class="form-control" id="exampleInputPassword1">
+                <span class="eye-icon" (click)="showpassword()" style="color:black; position:absolute;right:15px;top:40px;z-index: 10">
+                  <i style="cursor:pointer;"  [ngClass]="visible?'fa fa-eye': 'fa fa-eye-slash'"></i>
+                  </span>
+              </div>
               <div *ngIf="AddUserForm.controls['password'].invalid && (AddUserForm.controls['password'].dirty || AddUserForm.controls['password'].touched)" id="emailHelp" class="form-text">
                 <p class="alert alert-danger mt-3">* password should contain special charchters and capital letters,numbers and not empty</p>
               </div>
-            </div>
-            <div class="mb-2">
-              <label for="exampleInputPassword1" class="form-label">phone</label>
-              <input formControlName="phone" type="phone" class="form-control" id="exampleInputPassword1">
+              <div class=" text-center mb-4">
+                <label for="exampleInputPassword1" class="form-label" style="color: #f68b1e;">phone</label>
+                <input formControlName="phone"  type="text" class="form-control" id="exampleInputPassword1">
+              </div>
               <div *ngIf="AddUserForm.controls['phone'].invalid && (AddUserForm.controls['phone'].dirty || AddUserForm.controls['phone'].touched)" id="emailHelp" class="form-text">
                 <p class="alert alert-danger">* phone required</p>
               </div>
-            </div>
-            <div class="mb-2">
-              <label for="exampleInputPassword1" class="form-label">address</label>
-              <input formControlName="address" type="address" class="form-control" id="exampleInputPassword1">
+              <div class=" text-center mb-4">
+                <label for="exampleInputPassword1" class="form-label" style="color: #f68b1e;">address</label>
+                <input formControlName="address"  type="text" class="form-control" id="exampleInputPassword1">
+              </div>
               <div *ngIf="AddUserForm.controls['address'].invalid && (AddUserForm.controls['address'].dirty || AddUserForm.controls['address'].touched)" id="emailHelp" class="form-text">
                 <p class="alert alert-danger">* address required</p>
               </div>
-            </div>
             <div class="mb-2">
-              <input class="form-check-input mt-2" type="checkbox" formControlName="accept" id="">
-              <label for="male" class="form-label mx-2">Accept privacy & policies</label>
+              <input class="form-check-input box-accept mt-2" type="checkbox" formControlName="accept" id="">
+              <label for="male" class="form-label mx-2 acception">You are confirming that you read the privacy & policies</label>
               <div *ngIf="AddUserForm.controls['accept'].invalid && (AddUserForm.controls['accept'].dirty || AddUserForm.controls['accept'].touched)" id="emailHelp" class="form-text">
                 <p class="alert alert-danger">* you must accept the privacy and polices</p>
               </div>
             </div>
             <button type="submit" class="btn btn-danger">Sign Up</button>
           </form>
-          <a routerLink="/login"> Already registered...click to login</a>
-      </div>
-</section>
+          <a routerLink="/signup" class="signup_link text-center mt-2">Sign in if you already have an account</a>
+   
 
+    <div class="endText mt-5 text-center">
+      <p>
+        For further support, you may visit the Help Center or contact our customer service team.
+      </p>
+    </div>
+      <img src="../../../assets/images/JumiaLogo_(14).png" alt="logo not found" class="endImg">
+  

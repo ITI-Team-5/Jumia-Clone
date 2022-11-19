@@ -12,9 +12,8 @@ import { data } from 'jquery';
 export class ProductsComponent implements OnInit {
   LoggedInAdmin: any;
   categories: any;
-
   constructor(private myService: ServicesService,private router:Router) { }
-  products:any
+  products:any[]=[];
   title:any
   imgsrc:any
   page:number = 1;
@@ -28,13 +27,11 @@ export class ProductsComponent implements OnInit {
   getcategories(){
     this.myService.getAllCategories().subscribe(data=>{
       this.categories = data;
-      console.log(data);
     })
   }
   getProducts(){
   this.myService.getAllProducts(this.page).subscribe((response:any)=>{
     this.products = response.data;
-    this.imgsrc= 'http://localhost:8000/storage/images';
     this.total = response.total;
   })
   }
