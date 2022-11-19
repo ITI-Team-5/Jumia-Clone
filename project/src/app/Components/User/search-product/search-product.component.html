@@ -1,7 +1,7 @@
 
 <section class="mt-5 d-flex flex-xl-row flex-md-column flex-column justify-content-around align-items-center">
 <div *ngFor="let t of title">
-    <img width="220" height="220" src="{{imgsrc}}/{{t.image}}" alt="">
+    <img width="220" height="220" src="{{t.image}}" alt="">
     <h3>{{t.title}}</h3>
     <p>Price: {{t.price}} EGP</p>
     <p *ngIf="t.discount">Discount: {{t.discount}} EGP</p>

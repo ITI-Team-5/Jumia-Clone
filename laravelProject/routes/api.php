@@ -1,17 +1,20 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Validation\ValidationException;
-use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\passwords\CodeCheckController;
+use App\Http\Controllers\passwords\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +76,7 @@ Route::get("profiles/{profile}",[ProfileController::class,'show']);
 Route::get("profiles/{profile}/edit",[ProfileController::class,'edit']);
 Route::post("profiles/{profile}",[ProfileController::class,'update']);
 Route::delete("profiles/{profile}",[ProfileController::class,'destroy']);
+
 
 
 
