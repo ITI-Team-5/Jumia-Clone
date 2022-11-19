@@ -1,0 +1,14 @@
+
+div p{
+    margin:0;
+}
+div a{
+    text-decoration: none !important;
+    color:gray;
+    text-transform: capitalize;
+    transition: all .5s;
+}
+div a:hover{
+    color:#f68b1e;
+    font-size:18px
+}

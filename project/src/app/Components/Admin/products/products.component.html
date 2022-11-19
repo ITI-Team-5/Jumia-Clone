@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+      <h4>Search : </h4>
+      <input type="search" name="search" placeholder="{{'Search'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="mb-3 mt-2 form-control">
+      <h4>Filter : </h4>
+      
+    <ul class="list-cat">
+      <li style="font-size:14px;" class="nav-item" *ngFor="let c of categories"><a class="nav-link" href="categories/{{c.name}}">
+        {{c.name}}</a></li>
+    </ul>  
+
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-12">
+      <table class="w-100 table table-bordered table-hover table-striped text-center">
+        <thead>
+          <tr class="text-primary" style="border:2px solid rgb(195, 195, 195);">
+            <th>#</th>
+        
+            <th>{{'Title'|translate}}</th>
+            <th>{{'Category'| translate}}</th>
+            <th>{{'Image'|translate}}</th>
+            <th>{{'Price'|translate}}</th>
+            <th>{{'Details'|translate}}</th>
+            <th>{{'Actions'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-light" *ngFor="let p of products | paginate: { itemsPerPage: 12, currentPage: page, totalItems: total }">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.category}}</td>
+            <td><img width="150" src="{{p.image}}" alt="{{p.image}}"></td>
+            <td>{{p.price}} EGP</td>
+            <td>{{p.details}}</td>
+            <td><a routerLink="/products/edit/{{p.id}}" class=""><i class="fa fa-pencil"></i></a> <a style="cursor:pointer" (click)="DeleteProd(p.id)" class="mx-3 text-danger"><i class="fa fa-close"></i></a></td>
+            
+        
+          </tr>
+        </tbody>
+        </table>
+    </div>
+
+</div>
+</div>
+<pagination-controls class="text-center" (pageChange)="pageChangeEvent($event)"></pagination-controls>

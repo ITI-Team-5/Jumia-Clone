@@ -1,0 +1,41 @@
+*{
+  box-sizing: border-box;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 480px;
+}
+.logo {
+  align-items: center;
+  display: flex;
+  height: 64px;
+  justify-content: center;
+  margin: 0 0 8px;
+  position: relative;
+}
+.logo img{
+  width: 55px;
+  height: 55px;
+}
+.signup_link{
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #f68b1e;
+}
+input{
+  height: 43px;
+}
+.gogle{
+  margin-top: 80px;
+  height: 40px;
+}
+.endImg{
+  width: 100px;
+  margin: auto; 
+}
+

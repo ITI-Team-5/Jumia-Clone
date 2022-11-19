@@ -1,0 +1,41 @@
+<header class="w-100 bg-warning">
+  <nav class="navbar container navbar-expand-lg navbar-dark bg-warning">
+    <div class="container-fluid">
+      <li style="list-style:none;" class="nav-item dropdown text-white p-1">     
+      </li>
+      <a class="navbar-brand" href="/"><img width="100" src="../../../../assets/images/Jumia-Logo.png"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link text-white" style="text-decoration:none;" routerLinkActive="active" routerLink="/admin">{{'Products'|translate}}</a>
+      </li>
+      <li class="nav-item"><a class="nav-link text-white" style="text-decoration:none;" routerLinkActive="active"
+          routerLink="/AddProducts">{{'Add Products'|translate}}</a></li>
+      <li class="nav-item"><a class="nav-link text-white" style="text-decoration:none;" routerLinkActive="active" routerLink="/orders">{{'Orders'|translate}}</a>
+      </li>
+    </ul>
+      <li style="list-style:none;" class="dropdown">
+        <a class=" dropdown-toggle text-white" style="text-decoration: none;" href="#" id="navbarDropdown" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="text-secondary fa fa-user"></i> {{name}}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a href="/login" class="dropdown-item" (click)="logout()" *ngIf="isLoggedIn"> {{'logout'|translate}}</a></li>
+        </ul>
+      </li>
+      <li style="list-style:none;" class="nav-item dropdown text-white p-1">     
+        <select (change)="changelang(lang.value)" #lang class="form-select">
+          <option  class="dropdown-item" value="ar" >select language</option>
+          <!-- <option  class="dropdown-item" value="en" [selected]="lang=='en'">English</option> -->
+          <option  class="dropdown-item" value="ar" >ar</option>
+          <option  class="dropdown-item" value="de">De</option>
+          <option  class="dropdown-item" value="fr">Fr</option>
+          <option  class="dropdown-item" value="en" ><i class="text-primary fa fa-user"></i> En</option>
+        </select>
+      </li>
+    </div>
+</div>
+  </nav>
+</header>
