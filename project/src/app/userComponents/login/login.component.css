@@ -5,22 +5,22 @@
 
 }
 
-.custom-card{
+/* .custom-card{
   border: none;
   width: 500px;
   padding: 40px;
-  /* margin:auto; */
+ 
   background: hsla(205, 46%, 30%, 1);
   background: linear-gradient(90deg,hsla(205, 46%, 30%, 1) 0% , hsla(260,29%,36%,1) 100%);
-}
-label{
+} */
+/* label{
   font-size:17px;
   padding:5px;
-}
+} */
 /* input{
   height: 35px;
 } */
-.custom-card label, h1 ,h6{
+/* .custom-card label, h1 ,h6{
   color: #fff;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -37,4 +37,42 @@ a:hover{
 .btn-google{
   top:0;
   margin-left:10px;
+} */
+/* gdeed************************************************ */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 480px;
+}
+.logo {
+  align-items: center;
+  display: flex;
+  height: 64px;
+  justify-content: center;
+  margin: 0 0 8px;
+  position: relative;
+}
+.logo img{
+  width: 55px;
+  height: 55px;
+}
+.signup_link{
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #f68b1e;
+}
+input{
+  height: 43px;
+}
+.gogle{
+  margin-top: 80px;
+  height: 40px;
+}
+.endImg{
+  width: 100px;
+  margin: auto; 
 }
