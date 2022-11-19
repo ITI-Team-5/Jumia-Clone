@@ -12,6 +12,7 @@ class Product extends Model
     use Sluggable;
 
     protected $fillable = [
+        'id',
         'title',
         'SKU',
         'details',
@@ -19,7 +20,7 @@ class Product extends Model
         'image',
         'price',
         'discount',
-        'cat_id'
+        'category'
     ];
     public function sluggable(): array
     {
