@@ -8,7 +8,7 @@
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">{{'Product Name'| translate}}:</label>
     <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div *ngIf="!titlevalidation" id="emailHelp" class="form-text">
+    <div *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)" id="emailHelp" class="form-text">
       <p class="alert alert-danger mt-3">* {{'Product Name is required'|translate}}</p>
     </div>
   </div>
@@ -19,7 +19,7 @@
   <div class="mb-3">
     <label class="form-label">{{'Price'|translate}}: </label>
     <input formControlName="price" type="text" class="form-control" />
-    <div *ngIf="!pricevalidation" id="emailHelp" class="form-text">
+    <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)" id="emailHelp" class="form-text">
       <p class="alert alert-danger mt-3">* {{'price required'|translate}}</p>
     </div>
   </div>
@@ -37,7 +37,7 @@
   <div class="mb-3">
     <label class="form-label">{{'Details'|translate}}: </label>
     <input formControlName="details" type="text" class="form-control" />
-    <div *ngIf="!detailsvalidation" id="emailHelp" class="form-text">
+    <div *ngIf="form.controls['details'].invalid && (form.controls['details'].dirty || form.controls['details'].touched)" id="emailHelp" class="form-text">
       <p class="alert alert-danger mt-3">* {{'Details are required'|translate}}</p>
     </div>
   </div>

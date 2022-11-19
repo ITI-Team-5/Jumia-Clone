@@ -12,9 +12,8 @@ import { data } from 'jquery';
 export class ProductsComponent implements OnInit {
   LoggedInAdmin: any;
   categories: any;
-
   constructor(private myService: ServicesService,private router:Router) { }
-  products:any
+  products:any[]=[];
   title:any
   imgsrc:any
   page:number = 1;
