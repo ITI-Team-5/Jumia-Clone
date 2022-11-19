@@ -10,7 +10,7 @@ import { data } from 'jquery';
   styleUrls: ['./add-products.component.css']
 })
 export class AddProductsComponent implements OnInit {
-
+  categories:any;
   form :FormGroup;
   constructor(public fb:FormBuilder,public myService: ServicesService,private _route:Router)
    {
@@ -20,7 +20,8 @@ export class AddProductsComponent implements OnInit {
       image:null,
       price: [0,[Validators.required]],
       details: ['',[Validators.required]],
-      discount:null
+      discount:null,
+      cat_id:null
     })
    }
    get titlevalidation(){
@@ -54,6 +55,11 @@ export class AddProductsComponent implements OnInit {
   //     window.location.href = "/";
 
   //   }
+  this.myService.getAllCategories().subscribe(data=>{
+  this.categories = data;
+  console.log(data);
+  })
+
   }
  
 
@@ -74,6 +80,7 @@ submitForm()
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
      formData.append('discount', this.form.controls['discount'].value);
+     formData.append('cat_id', this.form.controls['cat_id'].value);
     //  formData.append('_METHOD', 'POST');
      console.log(formData);
 

@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
 
     public function index(){
-        return Product::orderBy('id', 'desc')->paginate(12);
+        return DB::table('products as p')->join('categories as c','p.cat_id', '=' , 'c.id')->select('p.title as product_title','c.cat_title as cat_title','image','price','details','p.id as id','discount')->orderBy('p.id', 'desc')->paginate(12);
     }
 
     public function show($productId){
@@ -26,6 +26,10 @@ class ProductController extends Controller
 
     public function discounts(){
          return Product::where('discount','!=','0')->get();
+    }
+
+    public function search($title){
+        return Product::where('title','like','%'.$title.'%')->get();
     }
 
     public function store(ProductsRequest $request)
@@ -44,7 +48,8 @@ class ProductController extends Controller
                 'details' => $data['details'],
                 'image' =>$profileImage,
                 'price' => $data['price'],
-                'discount'=>$data['discount']
+                'discount'=>$data['discount'],
+                'cat_id'=>$data['cat_id']
             ]);
         }
         else{
@@ -56,7 +61,9 @@ class ProductController extends Controller
                 'details' => $data['details'],
                 // 'image' =>$profileImage,
                 'price' => $data['price'],
-                'discount'=>$data['discount']
+                'discount'=>$data['discount'],
+                'cat_id'=>$data['cat_id']
+
             ]);
         }
 
@@ -92,7 +99,9 @@ class ProductController extends Controller
             'details' => $request->details,
             'image' => $profileImage,
             'price' => $request->price,
-            'discount'=>$request->discount
+            'discount'=>$request->discount,
+            'cat_id'=>$request->cat_id
+
 
         ]);
 
@@ -103,7 +112,9 @@ class ProductController extends Controller
                 'SKU' => $request->SKU,
                 'details' => $request->details,
                 'price' => $request->price,
-                'discount'=>$request->discount
+                'discount'=>$request->discount,
+                'cat_id'=>$request->cat_id
+
         ]);
         //  return dd($request);
         }

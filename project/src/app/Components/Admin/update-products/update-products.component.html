@@ -32,11 +32,14 @@
     <input formControlName="price" type="text" class="form-control" />
   </div>
   <div class="mb-3">
-    <label class="form-label">details: </label>
-    <input formControlName="details" type="text" class="form-control" />
     <label class="form-label">discount: </label>
     <input formControlName="discount" type="text" class="form-control" />
   </div>
+  <div class="mb-3">
+    <label class="form-label">Category: </label>
+    <select class="form-select" formControlName="cat_id" aria-label="Default select example">
+      <option *ngFor="let c of categories" value="{{c.id}}">{{c.cat_title}}</option>
+    </select>  </div>
   <div class="mb-3">
     <label class="form-label">details: </label>
     <input formControlName="details" type="text" class="form-control" />

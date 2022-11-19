@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from'rxjs';
+import { BehaviorSubject, Subject } from'rxjs';
 import { data } from 'jquery';
 
 @Injectable({
@@ -8,6 +8,14 @@ import { data } from 'jquery';
 })
 export class ServicesService {
   constructor(private myClient:HttpClient) { }
+
+// sharing data with service
+private product$ = new BehaviorSubject<any>({});
+  selectedProduct$ = this.product$.asObservable();
+  setProduct(product: any) {
+    this.product$.next(product);
+  }
+
 
 
 
@@ -18,6 +26,12 @@ private login  = "http://localhost:8000/api/login"
 private logout  = "http://localhost:8000/api/logout"
 private profile  = "http://localhost:8000/api/profiles"
 private discount = "http://localhost:8000/api/products/discounts"
+private cat = "http://localhost:8000/api/categories"
+private search = "http://localhost:8000/api/searches"
+ 
+
+
+
 
 getDiscounts(){
   return this.myClient.get(this.discount);
@@ -25,6 +39,17 @@ getDiscounts(){
 
 
 
+getAllCategories(){
+  let lang=localStorage.getItem('lang')||'en';
+
+  const header=new HttpHeaders({
+  'Accept-Language': lang
+  });
+return this.myClient.get(this.cat,{headers:header});
+}
+getCatId(id:any){
+  return this.myClient.get(`${this.cat}/${id}`)
+}
 
 
 getAllOrders(){
@@ -44,6 +69,14 @@ insertOrder(order:any){
 
 
 
+getAllProd(){
+  let lang=localStorage.getItem('lang')||'en';
+
+  const header=new HttpHeaders({
+  'Accept-Language': lang
+  });
+  return this.myClient.get(this.url,{headers:header})
+}
 getAllProducts(page:number){
   return this.myClient.get(this.url +'?page=' +page)
 }
@@ -79,6 +112,12 @@ getAllUsers(){
 getUserById(Id :any){
   return this.myClient.get(`${this.signup}/${Id}`)
 }
+
+searchbyTitle(title:any){
+  return this.myClient.get(`${this.search}/${title}`)
+
+}
+
 
 
 getProfile(){

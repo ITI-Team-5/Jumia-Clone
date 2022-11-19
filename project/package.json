@@ -23,6 +23,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/axios": "^0.14.0",
     "angular-datatables": "^13.1.0",
     "angular-dropdown-menu": "^0.3.0",

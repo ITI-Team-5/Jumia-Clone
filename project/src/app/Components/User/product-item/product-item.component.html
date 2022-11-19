@@ -8,10 +8,10 @@
         </div>
         <div class="card-body">
             <a routerLink="product/{{product.id}}" class="text-decoration-none product_title">
-                <h5 style="text-transform:capitalize ;">{{product.title}} </h5>
+                <h5 style="text-transform:capitalize ;">{{product.product_title}} </h5>
             </a>
             <div class="row">
-                <div  class="col-xl-6 col-lg-6 col-md-6 col-12 text-muted mb-3">price: {{product.price}} EGP</div>
+                <div  class="col-xl-6 col-lg-6 col-md-6 col-12 text-muted mb-3">{{'Price'|translate}}: {{product.price}} {{'EGP'|translate}}</div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                     <button style="font-size:15px" class="btn minus_btn me-2 " (click)="minus()"> <i class="fa fa-minus"></i> </button>
 
@@ -19,7 +19,7 @@
                     <button style="font-size:15px" class="btn plus_btn mx-2" (click)="plus()"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
-            <button class="btn w-100 add_btn my-2" (click)="Addtocart()">Add to cart</button>
+            <button class="btn w-100 add_btn my-2" (click)="Addtocart()">{{'Add to Cart'|translate}}</button>
         </div>
     </div>
 
