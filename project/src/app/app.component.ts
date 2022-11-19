@@ -9,6 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit{
   title = 'project';
   LoggedInAdmin: any;
+  navItem: any;
+
   lang:string;
 
   constructor(private trans:TranslateService){
@@ -25,6 +27,9 @@ export class AppComponent implements OnInit{
     this.lang=localStorage.getItem('lang')||'en';
 
   }
-
+  GetData(data:any){
+    this.navItem = data;
+   // console.log(data);
+    }
 }
 

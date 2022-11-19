@@ -18,7 +18,7 @@ export class DiscountsComponent implements OnInit {
     this.myservice.getDiscounts().subscribe((data:any)=>{
       that.products = data;
       this.imgsrc= 'http://localhost:8000/storage/images';
-      console.log(data);
+      //console.log(data);
     })
   }
 

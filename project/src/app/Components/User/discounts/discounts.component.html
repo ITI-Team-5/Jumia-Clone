@@ -1,11 +1,11 @@
-<div *ngFor="let p of products">
-    {{p.title}}
-    <p>{{p.price}}</p>
-    <p>{{p.discount}}</p>
-    <p><img src="{{imgsrc}}/{{p.image}}" width="200" height="200" alt=""></p>
-
+<section class="container">
+    <div class="row">
+<div class="col-xl-3 col-lg-3 col-md-6 col-12" *ngFor="let p of products">
+    <img src="{{imgsrc}}/{{p.image}}" width="200" height="200" alt="">
+    <h5>{{p.title}}</h5>
+    <p>Price: {{p.price}} EGP</p>
+    <p>Discount: {{p.discount}} EGP</p>
 </div>
-
-<div>
-asdoaskda;lsd;lsa
 </div>
+</section>
+

@@ -41,6 +41,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DiscountsComponent } from './Components/User/discounts/discounts.component';
 import { CategoriesComponent } from './Components/User/categories/categories.component';
 import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
+import { SearchProductComponent } from './Components/User/search-product/search-product.component';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -88,8 +89,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     LatestComponent,
   
     DiscountsComponent,
-    CategoriesComponent,
-    CategoriesDetailsComponent,
+
+        CategoriesComponent,
+        CategoriesDetailsComponent,
+        SearchProductComponent,
     
     
     

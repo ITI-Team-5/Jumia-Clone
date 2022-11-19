@@ -14,6 +14,7 @@ export class UpdateProductsComponent implements OnInit {
   form: FormGroup;
   // SKU:any;title:any;image:any;price:any;details:any;
   myimage:any;
+  categories: any;
   constructor(public fb: FormBuilder, private myService:ServicesService,private route:ActivatedRoute) 
   {
          this.form = this.fb.group({
@@ -69,7 +70,12 @@ export class UpdateProductsComponent implements OnInit {
                 cat_id:new FormControl(data['cat_id'])
             })
     });
-  }
+    this.myService.getAllCategories().subscribe(data=>{
+      this.categories = data;
+      console.log(data);
+
+  })
+}
   get titlevalidation(){
     // return this.signup.value.name.validdata['image']
     return this.form.value.title
