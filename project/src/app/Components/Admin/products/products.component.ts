@@ -40,11 +40,13 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
 }
   DeleteProd(prod_id:any){
+    if(confirm("are you sure you wanna delete this item")){
     console.log(prod_id);
     this.myService.Deleteprod(prod_id).subscribe((data)=>{
       console.log(data);
       window.location.href = "/admin";
     })
+  }
   }
 
   search(){
