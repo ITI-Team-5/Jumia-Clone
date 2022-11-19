@@ -17,25 +17,27 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    public function allcategories(){
+
+    public function allcategories()
+    {
+        $category = Category::all();
         $api_url = 'https://dummyjson.com/products/categories';
         $res = Http::get($api_url)->body();
         $data = json_decode($res);
-foreach($data as $cat){
-// echo '<pre>';
-//     print_r($cat);
-Category::updateOrCreate([
-'name'=> $cat
-]);
-$category = Category::all();
-return $category;
-
-}
-
+        foreach ($data as $cat) {
+            // echo '<pre>';
+            //     print_r($cat);
+            Category::updateOrCreate([
+                'name' => $cat
+            ]);
+        }
+        $category = Category::all();
+        return $category;
     }
-    public function showcategory($catname){
+    public function showcategory($catname)
+    {
 
-        $category =DB::table('products')->join('categories','products.category', '=' , 'categories.name')->select('title','category','price','discount','image')->where('category',$catname)->get();
+        $category = DB::table('products')->join('categories', 'products.category', '=', 'categories.name')->select('title', 'category', 'price', 'discount', 'image')->where('category', $catname)->get();
         return $category;
     }
 }

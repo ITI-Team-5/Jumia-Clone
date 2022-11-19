@@ -15,6 +15,7 @@ export class CategoriesComponent implements OnInit {
     let that = this;
     this.myservice.getAllCategories().subscribe((data:any)=>{
       that.categories = data;
+      console.log(data);
       
     })
   }

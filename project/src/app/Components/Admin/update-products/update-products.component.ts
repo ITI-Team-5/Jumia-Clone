@@ -19,12 +19,11 @@ export class UpdateProductsComponent implements OnInit {
   {
          this.form = this.fb.group({
           title: ['',[Validators.required]],
-          SKU: null,
           image:null,
           price: [0,[Validators.required]],
           details: ['',[Validators.required]],
           discount:null,
-          cat_id:null
+          category:null
       })
 
     // this.myService.getByIdedit(this.route.snapshot.params['id']).subscribe((data:any)=>{
@@ -62,12 +61,11 @@ export class UpdateProductsComponent implements OnInit {
             this.form = new FormGroup
             ({
                 title:new FormControl( data['title']),
-                SKU: new FormControl(data['SKU']),
                  image:new FormControl(data['image']),
                 price:new FormControl( data['price']),
                 discount:new FormControl( data['discount']),
                 details:new FormControl(data['details']),
-                cat_id:new FormControl(data['cat_id'])
+                category:new FormControl(data['category'])
             })
     });
     this.myService.getAllCategories().subscribe(data=>{
@@ -102,11 +100,10 @@ export class UpdateProductsComponent implements OnInit {
     const formData: any = new FormData();
     formData.append('image', this.form.controls['image'].value);
     formData.append('title', this.form.controls['title'].value);
-    formData.append('SKU', this.form.controls['SKU'].value);
     formData.append('details', this.form.controls['details'].value);
     formData.append('price', this.form.controls['price'].value);
     formData.append('discount', this.form.controls['discount'].value);
-    formData.append('cat_id', this.form.controls['cat_id'].value);
+    formData.append('category', this.form.controls['category'].value);
     formData.append('_METHOD', 'PUT');
 
     console.log(formData);
