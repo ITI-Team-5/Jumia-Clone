@@ -78,7 +78,7 @@ getAllProd(){
   return this.myClient.get(this.url,{headers:header})
 }
 getAllProducts(page:number){
-  return this.myClient.get(this.url +'?page=' +page)
+  return this.myClient.get(this.url)
 }
 getById(slug:any){
   return this.myClient.get(`${this.url}/${slug}`)
