@@ -18,6 +18,7 @@ private product$ = new BehaviorSubject<any>({});
 
 
 
+private googleSign = "http://localhost:8000/api/signupWithGoogle"
 
 private orders = "http://localhost:8000/api/orders"
 private url  = "http://localhost:8000/api/products"
@@ -37,7 +38,9 @@ getDiscounts(){
   return this.myClient.get(this.discount);
 }
 
-
+googleSignup(newuser:any){
+  return this.myClient.post(this.googleSign,newuser)
+}
 
 getAllCategories(){
   let lang=localStorage.getItem('lang')||'en';
