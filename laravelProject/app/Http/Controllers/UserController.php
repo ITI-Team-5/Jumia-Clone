@@ -29,6 +29,20 @@ class UserController extends Controller
         return $newUser;
 
     }
+    public function RegisterByGoogle(Request  $request)
+    {
+        //   $request->validated();
+            $user = User::UpdateOrCreate([
+            'name' => request()->name,
+            'email' => request()->email,
+            // 'remember_token' => request()->idToken,
+        ]);
+        
+         return (['token' => $user->createToken($request->email)->plainTextToken,'name' =>$user->name,'role' => $user->role,"UserId"=>$user->id]);
+
+
+    }
+
 
     //login
     public function login(Request $request){

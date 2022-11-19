@@ -65,7 +65,7 @@
 <section class="container" >
         
 <div class="row">
-<div class="col-xl-4 col-lg-6 col-md-12 col-12 p-2" *ngFor="let product of products |  paginate: { itemsPerPage: 12, currentPage: page, totalItems: total } |sort:[SortbyParam,SortDirection]">
+<div class="col-xl-3 col-lg-5 text-lg-center m-lg-auto col-md-12 col-12 p-2" *ngFor="let product of products |  paginate: { itemsPerPage: 12, currentPage: page, totalItems: total } |sort:[SortbyParam,SortDirection]">
         <app-product-item  [product]="product" (item)="addtocart($event)"></app-product-item>
         </div>
 </div>

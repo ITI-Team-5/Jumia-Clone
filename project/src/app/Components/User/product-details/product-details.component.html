@@ -7,10 +7,10 @@
         <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-5">
             <h2 style="text-transform:capitalize">{{singleProduct.title}}</h2>
             <p>{{'Product Details'|translate}} : {{singleProduct.details}}</p>
-            <p>{{'Category'|translate}} : {{singleProduct.cat_id}}</p>
+            <p>{{'Category'|translate}} : {{singleProduct.category}}</p>
             <div class="row">
-                <div style="font-weight:bolder;font-size:18px;" class="col-xl-6 col-lg-6 col-md-12 col-12 text-muted mb-3">{{'Price'|translate}} {{singleProduct.price}} EGP</div>
-                <div *ngIf="singleProduct.discount" style="font-weight:bolder;font-size:18px;color:red !important;" class="col-xl-6 col-lg-6 col-md-12 col-12 text-muted mb-3">discount: {{singleProduct.discount}} {{'EGP'|translate}}</div>
+                <div *ngIf="singleProduct.discount" style="font-weight:bolder;font-size:18px;color:red !important;" class="col-xl-12 col-lg-12 col-md-12 col-12 text-muted mb-3">{{singleProduct.price - (singleProduct.price*singleProduct.discount)/100}} {{'EGP'|translate}}</div>
+                <div style="text-decoration:line-through;font-weight:bolder;font-size:18px;" class="col-xl-12 col-lg-12 col-md-12 col-12 text-muted mb-3"> {{singleProduct.price}} EGP</div>
 
                 <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                     <!-- <button class="border rounded bg-white sign"><span class="fa fa-plus" id="orange"></span></button> -->

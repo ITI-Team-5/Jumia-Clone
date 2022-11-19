@@ -2,7 +2,7 @@
     <ng-template *ngFor="let p of discount"  carouselSlide>
         <a routerLink="product/{{p.id}}"> <img width="200" height="200" src="{{p.image}}" alt="">
             </a>
-        <h5 style="text-align:left;text-transform:capitalize">{{p.product_title}}</h5>
+        <h5 style="text-align:left;text-transform:capitalize">{{p.title}}</h5>
             <p class="text-danger" style="text-align:left;color:#000;font-size:20px;">EGP {{p.discount}}</p> 
               <p style="text-align:left;color:gray;text-decoration:line-through;font-size: 18px;">EGP  {{p.price}}</p> 
 
