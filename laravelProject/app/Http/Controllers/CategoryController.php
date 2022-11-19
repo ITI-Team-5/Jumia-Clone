@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function showcategory($catname)
     {
 
-        $category = DB::table('products')->join('categories', 'products.category', '=', 'categories.name')->select('title', 'category', 'price', 'discount', 'image')->where('category', $catname)->get();
+        $category = DB::table('products as p')->join('categories', 'p.category', '=', 'categories.name')->select('p.title as product_title', 'category', 'price', 'discount', 'image','p.id as product_id')->where('category', $catname)->get();
         return $category;
     }
 }
