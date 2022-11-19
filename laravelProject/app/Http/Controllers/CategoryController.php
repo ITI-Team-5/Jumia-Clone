@@ -17,26 +17,33 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    public function allcategories(){
-        // $category = Category::all();
-        // return $category;
-        $api_url = 'https://dummyjson.com/products/categories';
-        $res = Http::get($api_url)->body();
-        $data = json_decode($res);
-foreach($data as $cat){
-// echo '<pre>';
-//     print_r($cat);
-Category::updateOrCreate([
-'name'=> $cat
-]);
-$category = Category::all();
-return $category;
 
-}
+
+    public function allcategories()
+    {
+        $category = Category::all();
+
+        if (count($category) == 0) {
+            $api_url = 'https://dummyjson.com/products/categories';
+            $res = Http::get($api_url)->body();
+            $data = json_decode($res);
+            foreach ($data as $cat) {
+                Category::updateOrCreate([
+                    'name' => $cat
+                ]);
+            }
+            $category = Category::all();
+            return $category;
+        }
+
+            return $category;
+
     }
-    public function showcategory($catname){
 
-        $category =DB::table('products')->join('categories','products.category', '=' , 'categories.name')->select('title','category','price','discount','image')->where('category',$catname)->get();
+    public function showcategory($catname)
+    {
+
+        $category = DB::table('products')->join('categories', 'products.category', '=', 'categories.name')->select('title', 'category', 'price', 'discount', 'image')->where('category', $catname)->get();
         return $category;
     }
 }

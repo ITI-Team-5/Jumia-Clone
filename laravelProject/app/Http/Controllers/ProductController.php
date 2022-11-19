@@ -16,36 +16,33 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $api_url = 'https://dummyjson.com/products';
-        $res = Http::get($api_url)->body();
-        // echo '<pre>';
-        // print_r ($res);
-        $data = json_decode($res)->products;
-        // print_r ($data->products);
-        foreach ($data as $prod) {
+        $products = Product::all();
 
-            // print_r($prod);
-            // die;
-            $prod = (array)$prod;
-            Product::updateOrCreate(
-                ['id' => $prod['id']],
-                [
-                    'id' => $prod['id'],
-                    'title' => $prod['title'],
-                    'details' => $prod['description'],
-                    'price' => $prod['price'],
-                    'quantity' => $prod['stock'],
-                    'category' => $prod['category'],
-                    'discount' => $prod['discountPercentage'],
-                    'image' => $prod['thumbnail']
-                ]
-            );
+        if (count($products) == 0) {
+            $api_url = 'https://dummyjson.com/products';
+            $res = Http::get($api_url)->body();
+            $data = json_decode($res)->products;
+            foreach ($data as $prod) {
+                $prod = (array)$prod;
+                Product::updateOrCreate(
+                    ['id' => $prod['id']],
+                    [
+                        'id' => $prod['id'],
+                        'title' => $prod['title'],
+                        'details' => $prod['description'],
+                        'price' => $prod['price'],
+                        'quantity' => $prod['stock'],
+                        'category' => $prod['category'],
+                        'discount' => $prod['discountPercentage'],
+                        'image' => $prod['thumbnail']
+                    ]
+                );
+            }
+            $products = Product::all();
+            return $products;
         }
-        // dd('datastored');
-
-        // return DB::table('products as p')->join('categories as c', 'p.cat_id', '=', 'c.id')->select('p.title as product_title', 'c.cat_title as cat_title', 'image', 'price', 'details', 'p.id as id', 'discount')->orderBy('p.id', 'desc')->paginate(12);
-
-        return DB::table('products as p')->select('p.title as product_title', 'p.category as cat_title', 'image', 'price', 'details', 'p.id as id', 'discount', 'quantity')->orderBy('p.id', 'desc')->paginate(12);
+        return $products;
+        // return DB::table('products as p')->select('p.title as product_title', 'p.category as cat_title', 'image', 'price', 'details', 'p.id as id', 'discount', 'quantity')->orderBy('p.id', 'desc')->paginate(12);
 
 
     }
@@ -76,26 +73,26 @@ class ProductController extends Controller
             $request->image = "$profileImage";
             $data = $request->all();
             return Product::create([
-                    'title' => $data['title'],
-                    'SKU' => $data['SKU'],
-                    'details' => $data['details'],
-                    'image' => $profileImage,
-                    'price' => $data['price'],
-                    'discount' => $data['discount'],
-                    'cat_id' => $data['cat_id']
-                ]);
+                'title' => $data['title'],
+                'SKU' => $data['SKU'],
+                'details' => $data['details'],
+                'image' => $profileImage,
+                'price' => $data['price'],
+                'discount' => $data['discount'],
+                'cat_id' => $data['cat_id']
+            ]);
         } else {
             $data = $request->all();
             return Product::create([
-                    'title' => $data['title'],
-                    'SKU' => $data['SKU'],
-                    'details' => $data['details'],
-                    // 'image' =>$profileImage,
-                    'price' => $data['price'],
-                    'discount' => $data['discount'],
-                    'cat_id' => $data['cat_id']
+                'title' => $data['title'],
+                'SKU' => $data['SKU'],
+                'details' => $data['details'],
+                // 'image' =>$profileImage,
+                'price' => $data['price'],
+                'discount' => $data['discount'],
+                'cat_id' => $data['cat_id']
 
-                ]);
+            ]);
         }
     }
 
