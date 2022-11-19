@@ -41,11 +41,11 @@ class ProductController extends Controller
                 ]
             );
         }
-        dd('datastored');
+        // dd('datastored');
 
         // return DB::table('products as p')->join('categories as c', 'p.cat_id', '=', 'c.id')->select('p.title as product_title', 'c.cat_title as cat_title', 'image', 'price', 'details', 'p.id as id', 'discount')->orderBy('p.id', 'desc')->paginate(12);
 
-        return DB::table('products as p')->select('p.title as product_title', 'p.category as cat_title', 'image', 'price', 'details', 'p.id as id', 'discount', 'quantity')->orderBy('p.id', 'desc')->paginate(12);
+        return DB::table('products')->select('title', 'category', 'image', 'price', 'details', 'id', 'discount', 'quantity')->orderBy('id', 'desc')->paginate(12);
 
 
     }

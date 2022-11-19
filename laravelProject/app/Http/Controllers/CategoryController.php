@@ -12,13 +12,16 @@ use App\Models\Order;
 use App\Models\Product_Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
     public function allcategories(){
-        $category = Category::all();
-        return $category;
+        $api_url = 'https://dummyjson.com/products/categories';
+        $res = Http::get($api_url)->body();
+        $data = json_decode($res);
+        return $data;
     }
     public function showcategory($catId){
         //SELECT p.title,cat_id,price,discount,c.title from products p join categories c on c.id = p.cat_id;

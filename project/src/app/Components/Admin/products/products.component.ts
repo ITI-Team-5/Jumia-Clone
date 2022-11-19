@@ -34,7 +34,6 @@ export class ProductsComponent implements OnInit {
   getProducts(){
   this.myService.getAllProducts(this.page).subscribe((response:any)=>{
     this.products = response.data;
-    this.imgsrc= 'http://localhost:8000/storage/images';
     this.total = response.total;
   })
   }

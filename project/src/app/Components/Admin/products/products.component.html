@@ -4,8 +4,8 @@
     <div class="col-4 p-3">
         <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
           <option selected>Sort By Category</option>
-          <option *ngFor="let c of categories" value="{{c.cat_title}}">
-            {{c.cat_title}}</option>
+          <option *ngFor="let c of categories" value="{{c.category}}">
+            {{c.category}}</option>
         </select>
     </div>
    <div class="p-3 col-xl-4 col-lg-4 col-6 col-md-6 search">
@@ -32,9 +32,9 @@
 <tbody>
   <tr class="table-light" *ngFor="let p of products | paginate: { itemsPerPage: 12, currentPage: page, totalItems: total }">
     <td>{{p.id}}</td>
-    <td>{{p.product_title}}</td>
-    <td>{{p.cat_title}}</td>
-    <td><img width="150" src="{{imgsrc}}/{{p.image}}" alt="{{p.image}}"></td>
+    <td>{{p.title}}</td>
+    <td>{{p.category}}</td>
+    <td><img width="150" src="{{p.image}}" alt="{{p.image}}"></td>
     <td>{{p.price}} EGP</td>
     <td>{{p.details}}</td>
     <td><a routerLink="/products/edit/{{p.id}}" class=""><i class="fa fa-pencil"></i></a> <a style="cursor:pointer" (click)="DeleteProd(p.id)" class="mx-3 text-danger"><i class="fa fa-close"></i></a></td>

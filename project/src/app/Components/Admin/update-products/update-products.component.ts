@@ -19,7 +19,7 @@ export class UpdateProductsComponent implements OnInit {
   {
          this.form = this.fb.group({
           title: ['',[Validators.required]],
-          SKU: ['',[Validators.required,Validators.maxLength(10)]],
+          SKU: null,
           image:null,
           price: [0,[Validators.required]],
           details: ['',[Validators.required]],
@@ -79,10 +79,6 @@ export class UpdateProductsComponent implements OnInit {
   get titlevalidation(){
     // return this.signup.value.name.validdata['image']
     return this.form.value.title
-  }
-  get SKUvalidation(){
-    // return this.signup.value.name.validdata['image']
-    return this.form.value.SKU
   }
   get pricevalidation(){
     // return this.signup.value.name.validdata['image']
