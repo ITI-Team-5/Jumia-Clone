@@ -76,27 +76,3 @@ Route::delete("profiles/{profile}",[ProfileController::class,'destroy']);
 
 
 
-
-
-// Route::get('google/auth/redirect', function () {
-//     return Socialite::driver('google')->redirect();
-// });
-
-// Route::get('google/auth/callback', function () {
-//     $githubUser = Socialite::driver('google')->stateless()->user();
-
-//     $user = User::updateOrCreate([
-//         'email' => $githubUser->email,
-//     ], [
-//         'name' => $githubUser->name,
-//         'email' => $githubUser->email,
-//         'github_token' => $githubUser->token,
-//         'github_refresh_token' => $githubUser->refreshToken,
-//     ]);
-
-//     Auth::login($user);
-
-//     return $user;
-// });
-
-
