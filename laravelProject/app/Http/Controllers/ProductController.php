@@ -41,7 +41,7 @@ class ProductController extends Controller
                 ]
             );
         }
-        dd('datastored');
+        // dd('datastored');
 
         // return DB::table('products as p')->join('categories as c', 'p.cat_id', '=', 'c.id')->select('p.title as product_title', 'c.cat_title as cat_title', 'image', 'price', 'details', 'p.id as id', 'discount')->orderBy('p.id', 'desc')->paginate(12);
 
