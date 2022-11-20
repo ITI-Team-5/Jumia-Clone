@@ -1,5 +1,5 @@
 # #Jumia-Clone
-=======
+========
 
 
 ## Angular Laravel Ecommerce Platform
