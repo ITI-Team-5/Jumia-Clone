@@ -22,9 +22,10 @@ export class DiscountSliderComponent implements OnInit {
       this.products = response.data;
       this.imgsrc= 'http://localhost:8000/storage/images';
       for(let j=0;j<this.products.length;j++){
+        //console.log(this.products[j])
         if(this.products[j].discount){
         this.discount.push(this.products[j])
-        console.log(this.discount)
+        //console.log(this.discount)
         }
          }
     })
@@ -47,10 +48,10 @@ export class DiscountSliderComponent implements OnInit {
         items: 2
       },
       740: {
-        items: 3
+        items: 4
       },
       940: {
-        items: 3
+        items: 4
       }
     },
     nav: true

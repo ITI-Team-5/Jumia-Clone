@@ -22,6 +22,8 @@ import { UserGuard } from './Components/Admin/user.guard';
 import { AdminGuard } from './Components/Admin/admin.guard';
 import { DiscountsComponent } from './Components/User/discounts/discounts.component';
 import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
+import { SearchProductComponent } from './Components/User/search-product/search-product.component';
+import { CategoryDetailComponent } from './Components/Admin/category-detail/category-detail.component';
 
 const routes: Routes = [
   {
@@ -54,6 +56,11 @@ const routes: Routes = [
     canActivate:[UserGuard]
   },
   {
+    path:"searches/:title",
+    component:SearchProductComponent,
+    canActivate:[UserGuard]
+  },
+  {
     path:"products/discounts",
     component:DiscountsComponent,
     canActivate:[UserGuard]
@@ -62,6 +69,11 @@ const routes: Routes = [
     path:"category/:id",
     component:CategoriesDetailsComponent,
     canActivate:[UserGuard]
+  },
+  {
+    path:"categories/:name",
+    component:CategoryDetailComponent,
+    canActivate:[AdminGuard]
   },
   {
     path:"AddProducts",

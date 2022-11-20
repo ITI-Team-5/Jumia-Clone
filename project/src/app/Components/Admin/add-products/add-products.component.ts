@@ -10,18 +10,17 @@ import { data } from 'jquery';
   styleUrls: ['./add-products.component.css']
 })
 export class AddProductsComponent implements OnInit {
-
+  categories:any;
   form :FormGroup;
   constructor(public fb:FormBuilder,public myService: ServicesService,private _route:Router)
    {
       this.form = this.fb.group({
       title: ['',[Validators.required]],
-      SKU: ['',[Validators.required,Validators.maxLength(10)]],
       image:null,
       price: [0,[Validators.required]],
       details: ['',[Validators.required]],
       discount:null,
-      cat_id:null
+      category:null
     })
    }
    get titlevalidation(){
@@ -55,6 +54,11 @@ export class AddProductsComponent implements OnInit {
   //     window.location.href = "/";
 
   //   }
+  this.myService.getAllCategories().subscribe(data=>{
+  this.categories = data;
+  console.log(data);
+  })
+
   }
  
 
@@ -71,11 +75,10 @@ submitForm()
   const formData :any= new FormData();
      formData.append('image', this.form.controls['image'].value);
      formData.append('title', this.form.controls['title'].value);
-     formData.append('SKU', this.form.controls['SKU'].value);
      formData.append('details', this.form.controls['details'].value);
      formData.append('price', this.form.controls['price'].value);
      formData.append('discount', this.form.controls['discount'].value);
-     formData.append('cat_id', this.form.controls['cat_id'].value);
+     formData.append('category', this.form.controls['category'].value);
     //  formData.append('_METHOD', 'POST');
      console.log(formData);
 

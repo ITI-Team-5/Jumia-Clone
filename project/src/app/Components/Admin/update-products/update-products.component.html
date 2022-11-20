@@ -13,19 +13,8 @@
     </div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">SKU:</label>
-    <input  formControlName="SKU"  type="text" class="form-control" id="exampleInputPassword1">
-    <div *ngIf="!SKUvalidation" id="emailHelp" class="form-text">
-      <p class="alert alert-danger mt-3">* SKU required and 10 chars max</p>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <div class="col-xl-8 col-lg-8 col-md-12 col-12">
-    <label class="form-label">image: </label>
-    <input  type="file" style="height:100px" class="form-control" (change)="uploadFile($event)" />
-  </div>
-    <div class="col-xl-4 col-lg-4 col-md-12 col-12 rounded"><img class="img-fluid img-thumbnail" src="{{imgsrc}}/{{myimage}}" alt="{{myimage}}"></div>
-
+    <label for="exampleInputEmail1" class="form-label">Image Link:</label>
+    <input formControlName="image" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label class="form-label">price: </label>
@@ -36,9 +25,10 @@
     <input formControlName="discount" type="text" class="form-control" />
   </div>
   <div class="mb-3">
-    <label class="form-label">cat_id: </label>
-    <input formControlName="cat_id" type="text" class="form-control" />
-  </div>
+    <label class="form-label">Category: </label>
+    <select class="form-select" formControlName="category" aria-label="Default select example">
+      <option *ngFor="let c of categories" value="{{c.name}}">{{c.name}}</option>
+    </select>  </div>
   <div class="mb-3">
     <label class="form-label">details: </label>
     <input formControlName="details" type="text" class="form-control" />

@@ -1,0 +1,10 @@
+
+<section class="mt-5 d-flex flex-wrap flex-xl-row flex-md-column flex-column justify-content-evenly align-items-center">
+<div *ngFor="let t of title">
+  <a href="product/{{t.id}}">  <img width="220" height="220" src="{{t.image}}" alt=""></a>
+    <h3>{{t.title}}</h3>
+    <p *ngIf="t.discount" style="margin:0;color:red;font-size:18px"> {{t.price - (t.discount*t.price)/100}} EGP</p>
+    <p style="margin:0;"> {{t.price}} EGP</p>
+</div>
+</section>
+   

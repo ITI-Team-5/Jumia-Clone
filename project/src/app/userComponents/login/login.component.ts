@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
           console.log(data);
           localStorage.setItem('token',data['token']);  
           localStorage.setItem('name', data['name']);
-          localStorage.setItem('role', data['role']);
+          localStorage.setItem('role','user');
           localStorage.setItem('UserId', data['UserId']);
            window.location.href= "/"
       }

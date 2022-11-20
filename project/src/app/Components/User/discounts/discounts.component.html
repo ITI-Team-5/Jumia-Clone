@@ -1,11 +1,12 @@
-<div *ngFor="let p of products">
-    {{p.title}}
-    <p>{{p.price}}</p>
-    <p>{{p.discount}}</p>
-    <p><img src="{{imgsrc}}/{{p.image}}" width="200" height="200" alt=""></p>
-
+<section class="container mt-5">
+    <h2>Our Offers</h2>
+    <div class="row">
+<div class="col-xl-3 col-lg-3 col-md-6 col-12" *ngFor="let p of products">
+   <a href="product/{{p.id}}"><img src="{{p.image}}" width="200" height="200" alt=""></a>
+    <h5>{{p.title}}</h5>
+    <p style="margin:0;color:rgb(213, 140, 5);font-size:18px;">{{p.price - (p.discount * p.price)/100}} EGP</p>
+    <p style="text-decoration: line-through;margin:0;">{{p.price}}</p>
 </div>
-
-<div>
-asdoaskda;lsd;lsa
 </div>
+</section>
+

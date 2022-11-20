@@ -1,44 +1,9 @@
-<!-- <section class="bg-light d-flex justify-content-center align-items-center">
-  <div class="card custom-card mb-5" style="margin-top:100px">
-        <div class="text-center">
-          <h1>Login</h1>
-          <h6>please enter email & password</h6>
-        </div>
-        <form>
-          <form [formGroup]="login" (ngSubmit)="loginData()">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input formControlName="email" #email type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="content-container container mt-5 ">
+  <div class="row">
 
-              <div class="text-danger" >
-               
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input  formControlName="password"  #password type="password" class="form-control" id="exampleInputPassword1">
-              <div class="text-danger" >
-                
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">login</button>
-            <div class="mb-3 mt-3">
-              <a class="w-100 mb-2 btn-google text-white btn btn-danger"><i class="bg-white text-primary p-1 fa fa-google" style="border-radius:50%;"></i> Login with google</a>
-            </div>
-          </form>
-          <a routerLink="/signup"> new user.... click to SignUp</a>
-        </form>
-      </div>
-</section> -->
-
-<div class="content-container mt-5 ">
-  <div class="row ">
-
-
-    <asl-google-signin-button type='icon' size='large' (click)="startlogingoogle()" class="w-100 btn-google text-white btn btn-danger" ></asl-google-signin-button>
 
     <!-- <button class="btn btn-primary" (click)="signInWithFB()">login with FB</button> -->
+
     <div class="logo">
       <img src="../../../assets/images/jumiaicon.png" alt="logo not found" class="">
     </div>
@@ -56,14 +21,21 @@
         <input formControlName="password"  #password type="password" class="form-control" id="exampleInputPassword1">
       </div>
       <div class="custom row justify-content-center mt-5">
-        <button type="submit" class="btn  w-25" style="background-color: #ff8810; color: white;"> continue </button>
+        <button type="submit" class="btn  w-25" style="background-color: #ff8810; color: white;"> continue </button> 
+        <div class="text-center row bg-white mt-3 mb-3 p-2" style="border-radius:5px;">
+          <div class="col-2">
+            <asl-google-signin-button type='icon' size='large' class="mt-2 w-100" ></asl-google-signin-button>
+          </div>
+          <div class="col-9">
+              <h5 class="mt-2">          Sign in with google              </h5>
+          </div>
+        </div>     
       </div>
       
     </form>
     <a routerLink="/signup" class="signup_link text-center mt-2"> new user.... click to SignUp</a>
-    <div class="gogle ">
-      <a class="w-100 btn-google text-white btn btn-danger"> Login with google</a>
-    </div>
+   
+
     <div class="endText mt-5 text-center">
       <p>
         For further support, you may visit the Help Center or contact our customer service team.

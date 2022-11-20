@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from 'src/app/Components/Admin/Services/services.service';
 import { data } from 'jquery';
@@ -22,13 +22,17 @@ flag = false;
 name:any;
 cartItem: any ;
 title:any;
+Result:any;
 products:any[]=[];
+page:number = 1;
+total:number = 0;
 lang:string;
 
 //google
 user: SocialUser;
 loggedIn: boolean;
   constructor(  private socialAuthService: SocialAuthService ,private trans:TranslateService,public myservice: ServicesService ,private route: ActivatedRoute ) { 
+
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
     })
@@ -52,6 +56,11 @@ loggedIn: boolean;
     this.LoggedInAdmin = localStorage.getItem("role")
     this.isLoggedIn = localStorage.getItem("token");
     this.name = localStorage.getItem("name");
+     this.myservice.getAllProducts(this.page).subscribe((response:any)=>{
+      this.products = response.data;
+      this.total = response.total;
+    })
+
     this.CartItemFun()
     if(!this.cartItem){
       this.cartItem = 0 ;
@@ -85,16 +94,13 @@ loggedIn: boolean;
     }
     this.myservice.cartSubject.next(this.cartItem);
   }
-  search(){
-    if(this.title !=""){
-      this.products = this.products.filter((res:any)=>{
-        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
-      })
-  }else{
-    this.ngOnInit()
+
+  search(arg:any){
+
+      window.location.href = "/searches/"+arg;
+      
   }
-    console.log(this.title.toLocaleLowerCase())
-  }
+
 
   changelang(lang)
   {
@@ -103,7 +109,9 @@ loggedIn: boolean;
     window.location.reload()
   }
   
-}
+
+
+  }
 
  
 

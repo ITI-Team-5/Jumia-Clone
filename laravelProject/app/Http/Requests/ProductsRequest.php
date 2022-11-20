@@ -25,7 +25,6 @@ class ProductsRequest extends FormRequest
     {
         return [
             'title' =>['required'],
-            'SKU' =>['required','unique:products','max:10'],
             'details' =>['required'],
             'price' =>['required'],
         ];

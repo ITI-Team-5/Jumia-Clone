@@ -13,13 +13,13 @@
                                 </div>
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                    <img height="300" src="../../../../assets/images/FS---EN---DE.gif" class="d-block w-100" alt="...">
+                                    <img height="500" src="../../../../assets/images/FS---EN---DE.gif" class="d-block w-100" alt="...">
                                   </div>
                                   <div class="carousel-item">
-                                    <img height="300" src="../../../../assets/images/1152x252.png" class="d-block w-100" alt="...">
+                                    <img height="500" src="../../../../assets/images/1152x252.png" class="d-block w-100" alt="...">
                                   </div>
                                   <div class="carousel-item">
-                                    <img height="300" src="../../../../assets/images/bannerjumia.jpg" class="d-block w-100" alt="...">
+                                    <img height="500" src="../../../../assets/images/bannerjumia.jpg" class="d-block w-100" alt="...">
                                   </div>
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -51,25 +51,21 @@
 <section class="container mt-5 mb-5">
 <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-6">
-        <select (change)="onSortDirection()" [(ngModel)]='SortbyParam' class="form-control">
+
+         <select (change)="onSortDirection()" [(ngModel)]='SortbyParam' class="form-control">
         <option disabled value="">{{'Sort by Price'|translate}}</option>
       <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">{{'High to Low'|translate}}</option>
         <option *ngIf="SortDirection==='asc' ? 'desc' :'asc'" value="price">{{'Low to High'|translate}}</option>
         </select>
 
         </div> 
-        <div class="col-xl-4 col-lg-4 col-md-6 col-6">
-        <input type="search" name="search" placeholder="{{'search by name'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="form-control">
-        </div>
-</div>
+        </div> 
 </section>
 
 <section class="container" >
         
 <div class="row">
-        <!-- <div class="col-4"> -->
-
-<div class="col-xl-4 col-lg-6 col-md-12 col-12 p-2" *ngFor="let product of products |  paginate: { itemsPerPage: 12, currentPage: page, totalItems: total } |sort:[SortbyParam,SortDirection]">
+<div class="col-xl-3 col-lg-5 text-lg-center m-lg-auto col-md-12 col-12 p-2" *ngFor="let product of products |  paginate: { itemsPerPage: 12, currentPage: page, totalItems: total } |sort:[SortbyParam,SortDirection]">
         <app-product-item  [product]="product" (item)="addtocart($event)"></app-product-item>
         </div>
 </div>

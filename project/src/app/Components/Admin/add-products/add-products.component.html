@@ -6,27 +6,20 @@
     </div>
 <form [formGroup]="form" (ngSubmit)="submitForm()" >
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">{{'Product Name'|translate}}:</label>
+    <label for="exampleInputEmail1" class="form-label">{{'Product Name'| translate}}:</label>
     <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div *ngIf="!titlevalidation" id="emailHelp" class="form-text">
+    <div *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)" id="emailHelp" class="form-text">
       <p class="alert alert-danger mt-3">* {{'Product Name is required'|translate}}</p>
     </div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">SKU:</label>
-    <input  formControlName="SKU"  type="text" class="form-control" id="exampleInputPassword1">
-    <div *ngIf="!SKUvalidation" id="emailHelp" class="form-text">
-      <p class="alert alert-danger mt-3">* SKU {{'required and 10 chars max'|translate}}</p>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">{{'Image'|translate}}: </label>
-    <input type="file" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)" class="form-control" formControlName="image">
+    <label class="form-label">{{'Image Link'|translate}}: </label>
+    <input type="text" class="form-control" formControlName="image">
   </div>
   <div class="mb-3">
     <label class="form-label">{{'Price'|translate}}: </label>
     <input formControlName="price" type="text" class="form-control" />
-    <div *ngIf="!pricevalidation" id="emailHelp" class="form-text">
+    <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)" id="emailHelp" class="form-text">
       <p class="alert alert-danger mt-3">* {{'price required'|translate}}</p>
     </div>
   </div>
@@ -35,13 +28,16 @@
     <input formControlName="discount" type="text" class="form-control" />
   </div>
   <div class="mb-3">
-    <label class="form-label">{{'Category'|translate}}: </label>
-    <input formControlName="cat_id" type="text" class="form-control" />
+    <label class="form-">Category: </label>
+    <select class="form-select" formControlName="category" aria-label="Default select example">
+     <option *ngFor="let c of categories" value="{{c.name}}">{{c.name}}</option>
+    </select>
+
   </div>
   <div class="mb-3">
     <label class="form-label">{{'Details'|translate}}: </label>
     <input formControlName="details" type="text" class="form-control" />
-    <div *ngIf="!detailsvalidation" id="emailHelp" class="form-text">
+    <div *ngIf="form.controls['details'].invalid && (form.controls['details'].dirty || form.controls['details'].touched)" id="emailHelp" class="form-text">
       <p class="alert alert-danger mt-3">* {{'Details are required'|translate}}</p>
     </div>
   </div>
