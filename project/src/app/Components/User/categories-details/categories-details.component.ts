@@ -8,7 +8,6 @@ import { ServicesService } from '../../Admin/Services/services.service';
   styleUrls: ['./categories-details.component.css']
 })
 export class CategoriesDetailsComponent implements OnInit {
-  imgsrc= 'http://localhost:8000/storage/images';
   singlecat:any;
   id:any;
   constructor(private myserv:ServicesService ,private myactivrout:ActivatedRoute) {
@@ -17,7 +16,6 @@ export class CategoriesDetailsComponent implements OnInit {
    this.myserv.getCatId(Cat_id).subscribe(
     (data)=>{ 
       this.singlecat = data;
-      this.imgsrc= 'http://localhost:8000/storage/images';
       console.log(data);
     })
   }

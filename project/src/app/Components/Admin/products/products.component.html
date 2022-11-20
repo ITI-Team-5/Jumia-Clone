@@ -1,47 +1,55 @@
 <app-header></app-header>
-<div class="container">
+
+
+<div class="container-fluid mt-2">
   <div class="row">
-    <div class="col-4 p-3">
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-          <option selected>Sort By Category</option>
-          <option *ngFor="let c of categories" value="{{c.cat_title}}">
-            {{c.cat_title}}</option>
-        </select>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+      <h4>Search : </h4>
+      <input type="search" name="search" placeholder="{{'Search'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="mb-3 mt-2 form-control">
+      <h4>Filter : </h4>
+      <p>
+        <a class="w-100 btn btn-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Categories
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <li style="font-size:14px;" class="nav-item" *ngFor="let c of categories"><a class="nav-link" href="categories/{{c.name}}">
+            {{c.name}}</a></li>
+        </div>
+      </div>
+
     </div>
-   <div class="p-3 col-xl-4 col-lg-4 col-6 col-md-6 search">
-  <input type="search" name="search" placeholder="{{'Search'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="form-control">
+    <div class="col-xl-9 col-lg-9 col-md-9 col-12">
+      <table class="w-100 table table-bordered table-hover table-striped text-center">
+        <thead>
+          <tr class="text-primary" style="border:2px solid rgb(195, 195, 195);">
+            <th>#</th>
+        
+            <th>{{'Title'|translate}}</th>
+            <th>{{'Category'| translate}}</th>
+            <th>{{'Image'|translate}}</th>
+            <th>{{'Price'|translate}}</th>
+            <th>{{'Details'|translate}}</th>
+            <th>{{'Actions'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-light" *ngFor="let p of products | paginate: { itemsPerPage: 12, currentPage: page, totalItems: total }">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.category}}</td>
+            <td><img width="150" src="{{p.image}}" alt="{{p.image}}"></td>
+            <td>{{p.price}} EGP</td>
+            <td>{{p.details}}</td>
+            <td><a routerLink="/products/edit/{{p.id}}" class=""><i class="fa fa-pencil"></i></a> <a style="cursor:pointer" (click)="DeleteProd(p.id)" class="mx-3 text-danger"><i class="fa fa-close"></i></a></td>
+            
+        
+          </tr>
+        </tbody>
+        </table>
     </div>
-  </div>
 
 </div>
-
-<div class="container-fluid">
-<table class="w-100 mt-3 table table-bordered table-hover table-striped text-center">
-<thead>
-  <tr class="text-primary" style="border:2px solid rgb(195, 195, 195);">
-    <th>#</th>
-
-    <th>{{'Title'|translate}}</th>
-    <th>{{'Category'| translate}}</th>
-    <th>{{'Image'|translate}}</th>
-    <th>{{'Price'|translate}}</th>
-    <th>{{'Details'|translate}}</th>
-    <th>{{'Actions'|translate}}</th>
-  </tr>
-</thead>
-<tbody>
-  <tr class="table-light" *ngFor="let p of products | paginate: { itemsPerPage: 12, currentPage: page, totalItems: total }">
-    <td>{{p.id}}</td>
-    <td>{{p.product_title}}</td>
-    <td>{{p.cat_title}}</td>
-    <td><img width="150" src="{{imgsrc}}/{{p.image}}" alt="{{p.image}}"></td>
-    <td>{{p.price}} EGP</td>
-    <td>{{p.details}}</td>
-    <td><a routerLink="/products/edit/{{p.id}}" class=""><i class="fa fa-pencil"></i></a> <a style="cursor:pointer" (click)="DeleteProd(p.id)" class="mx-3 text-danger"><i class="fa fa-close"></i></a></td>
-    
-
-  </tr>
-</tbody>
-</table>
 </div>
 <pagination-controls class="text-center" (pageChange)="pageChangeEvent($event)"></pagination-controls>

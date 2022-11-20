@@ -1,0 +1,11 @@
+<p>
+  <a class="w-100 btn btn-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Categories
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <li style="font-size:14px;" class="nav-item" *ngFor="let c of categories"><a class="nav-link" href="categories/{{c.name}}">
+      {{c.name}}</a></li>
+  </div>
+</div>

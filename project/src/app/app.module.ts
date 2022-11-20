@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,7 @@ import { ProductItemComponent } from './Components/User/product-item/product-ite
 import { LoginComponent } from './userComponents/login/login.component';
 import { SignupComponent } from './userComponents/signup/signup.component';
 import { UsersService } from './services/users.service';
-import {NgxPaginationModule} from 'ngx-pagination';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { OrdersComponent } from './Components/Admin/orders/orders.component';
 import { OrderProductComponent } from './Components/Admin/order-product/order-product.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
@@ -45,6 +46,8 @@ import { SearchProductComponent } from './Components/User/search-product/search-
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CategoryDetailComponent } from './Components/Admin/category-detail/category-detail.component';
+import { AdminCategoriesComponent } from './Components/Admin/admin-categories/admin-categories.component';
 
 import {
   SocialLoginModule,
@@ -93,6 +96,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         CategoriesComponent,
         CategoriesDetailsComponent,
         SearchProductComponent,
+        CategoryDetailComponent,
+        AdminCategoriesComponent,
     
     
     

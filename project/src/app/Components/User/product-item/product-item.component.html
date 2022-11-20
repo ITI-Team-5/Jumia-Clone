@@ -2,20 +2,24 @@
     <div class="card">
         <div class="zoom-img">
         <a routerLink="product/{{product.id}}">
-            <img class="card-img-top img-thumbnail" src="{{imgsrc}}/{{product.image}}" alt="{{product.image}}">
+            <img class="card-img-top img-thumbnail" src="{{product.image}}" alt="{{product.image}}">
             
          </a>
         </div>
         <div class="card-body">
             <a routerLink="product/{{product.id}}" class="text-decoration-none product_title">
-                <h5 style="text-transform:capitalize ;">{{product.product_title}} </h5>
+                <h5 style="text-transform:capitalize ;">{{product.title}} </h5>
             </a>
             <div class="row">
-                <div  class="col-xl-6 col-lg-6 col-md-6 col-12 text-muted mb-3">{{'Price'|translate}}: {{product.price}} {{'EGP'|translate}}</div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                <div  class="col-xl-6 col-lg-6 col-md-6 col-12 text-muted mb-3">
+                   <p style="margin:0;font-size: 18px; color:red;"> {{'Price'|translate}}: 
+                    {{product.price - (product.price*product.discount)/100}} {{'EGP'|translate}}</p> 
+                    <p style="margin:0;text-decoration: line-through;">{{'Price'|translate}}: {{product.price}} {{'EGP'|translate}}</p>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                     <button style="font-size:15px" class="btn minus_btn me-2 " (click)="minus()"> <i class="fa fa-minus"></i> </button>
 
-                    <input type="" class="p-1 text-center" style="width:80px;font-size:17px;border:1px solid #f68b1e" [(ngModel)]="quantity">
+                    <input type="" class="p-1 text-center" style="width:25px;font-size:17px;border:1px solid #f68b1e" [(ngModel)]="quantity">
                     <button style="font-size:15px" class="btn plus_btn mx-2" (click)="plus()"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
