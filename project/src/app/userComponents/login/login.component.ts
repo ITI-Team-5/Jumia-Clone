@@ -39,8 +39,39 @@ export class LoginComponent implements OnInit {
   login : FormGroup|any;
 
   ngOnInit(): void {
+    
     // this.socialAuthService.signOut()
     // FB
+    // this.socialAuthService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.loggedIn = (user != null);
+    //   this.myService.googleSignup(this.user).subscribe(
+    //     {
+    //       next(data){
+    //       console.log(data);
+    //       localStorage.setItem('token',data['token']);  
+    //       localStorage.setItem('name', data['name']);
+    //       localStorage.setItem('role', data['role']);
+    //       localStorage.setItem('UserId', data['UserId']);
+    //        window.location.href= "/"
+    //   }
+    // });
+     
+     
+    // });
+    this.startlogingoogle();
+    this.login= new FormGroup({
+      "email": new FormControl( '',[Validators.required, Validators.email]),
+      "password": new FormControl('', [Validators.required])
+    })
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/']);
+    }
+   
+  } // end of nginit
+
+  startlogingoogle()
+  {
     this.socialAuthService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
@@ -58,15 +89,6 @@ export class LoginComponent implements OnInit {
      
      
     });
-
-    this.login= new FormGroup({
-      "email": new FormControl( '',[Validators.required, Validators.email]),
-      "password": new FormControl('', [Validators.required])
-    })
-    if(localStorage.getItem('token')){
-      this.router.navigate(['/']);
-    }
-   
   }
 
   // google &FB
