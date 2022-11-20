@@ -1,17 +1,23 @@
 <app-header></app-header>
 
 
-<div class="container mt-2">
+<div class="container-fluid mt-2">
   <div class="row">
     <div class="col-xl-3 col-lg-3 col-md-3 col-12">
       <h4>Search : </h4>
       <input type="search" name="search" placeholder="{{'Search'|translate}}" (input)="search()" [(ngModel)]="title" id="" class="mb-3 mt-2 form-control">
       <h4>Filter : </h4>
-      
-    <ul class="list-cat">
-      <li style="font-size:14px;" class="nav-item" *ngFor="let c of categories"><a class="nav-link" href="categories/{{c.name}}">
-        {{c.name}}</a></li>
-    </ul>  
+      <p>
+        <a class="w-100 btn btn-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Categories
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <li style="font-size:14px;" class="nav-item" *ngFor="let c of categories"><a class="nav-link" href="categories/{{c.name}}">
+            {{c.name}}</a></li>
+        </div>
+      </div>
 
     </div>
     <div class="col-xl-9 col-lg-9 col-md-9 col-12">
