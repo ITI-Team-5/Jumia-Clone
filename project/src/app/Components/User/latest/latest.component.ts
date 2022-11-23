@@ -19,7 +19,7 @@ export class LatestComponent implements OnInit {
   getdata()
   {
     this.myserv.getAllProducts(this.products).subscribe((response:any)=>{
-      this.products = response.data.slice(1,4)
+      this.products = response.data.slice(1,8)
       this.imgsrc= 'http://localhost:8000/storage/images';
      
      // console.log(this.products.slice(1,3))
@@ -43,10 +43,10 @@ export class LatestComponent implements OnInit {
         items: 2
       },
       740: {
-        items: 3
+        items: 4
       },
       940: {
-        items: 3
+        items: 4
       }
     },
     nav: true

@@ -16,10 +16,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('id', 'desc')->paginate(12);
 
         if (count($products) == 0) {
-            $api_url = 'https://dummyjson.com/products';
+            $api_url = 'https://dummyjson.com/products?limit=100';
             $res = Http::get($api_url)->body();
             $data = json_decode($res)->products;
             foreach ($data as $prod) {
@@ -38,7 +38,7 @@ class ProductController extends Controller
                     ]
                 );
             }
-            $products = Product::all();
+            $products = Product::orderBy('id', 'desc')->paginate(12);
             return $products;
         }
         return $products;
@@ -73,24 +73,22 @@ class ProductController extends Controller
             $request->image = "$profileImage";
             $data = $request->all();
             return Product::create([
-                'title' => $data['title'],
-                'SKU' => $data['SKU'],
-                'details' => $data['details'],
-                'image' => $profileImage,
-                'price' => $data['price'],
-                'discount' => $data['discount'],
-                'cat_id' => $data['cat_id']
-            ]);
+                    'title' => $data['title'],
+                    'details' => $data['details'],
+                    'image' => $data['image'],
+                    'price' => $data['price'],
+                    'discount' => $data['discount'],
+                    'category' => $data['category']
+                ]);
         } else {
             $data = $request->all();
             return Product::create([
-                'title' => $data['title'],
-                'SKU' => $data['SKU'],
-                'details' => $data['details'],
-                // 'image' =>$profileImage,
-                'price' => $data['price'],
-                'discount' => $data['discount'],
-                'cat_id' => $data['cat_id']
+                    'title' => $data['title'],
+                    'details' => $data['details'],
+                    'image' => $data['image'],
+                    'price' => $data['price'],
+                    'discount' => $data['discount'],
+                    'category' => $data['category']
 
             ]);
         }
@@ -107,7 +105,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $request->validate([
             'title' => ['required'],
-            'SKU' => ['required', 'unique:products,SKU,' . $id],
             'details' => ['required'],
             'price' => ['required'],
         ]);
@@ -121,23 +118,22 @@ class ProductController extends Controller
 
             return  $product->update([
                 'title' => $request->title,
-                'SKU' => $request->SKU,
                 'details' => $request->details,
-                'image' => $profileImage,
+                'image' => $request->image,
                 'price' => $request->price,
                 'discount' => $request->discount,
-                'cat_id' => $request->cat_id
+                'category' => $request->category
 
 
             ]);
         } else {
             return  $product->update([
                 'title' => $request->title,
-                'SKU' => $request->SKU,
+                'image' => $request->image,
                 'details' => $request->details,
                 'price' => $request->price,
                 'discount' => $request->discount,
-                'cat_id' => $request->cat_id
+                'category' => $request->category
 
             ]);
             //  return dd($request);
