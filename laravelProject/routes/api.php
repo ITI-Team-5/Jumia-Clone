@@ -13,8 +13,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\VerificationController as AuthVerificationController;
+// use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\passwords\CodeCheckController;
 use App\Http\Controllers\passwords\ForgotPasswordController;
+use App\Http\Controllers\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +30,19 @@ use App\Http\Controllers\passwords\ForgotPasswordController;
 |
 */
 
+
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/verified-only', function(Request $request){
+
+  dd('your are verified', $request->user()->name);
+})->middleware('auth:sanctum','verified');
+
+
 //orders
 Route::get("orders",[OrderController::class,'order']);
 Route::get("orders/{order}",[OrderController::class,'orderview']);
@@ -48,7 +61,11 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 Route::post('/sanctum/token', [UserController::class,'login']);
 
 // google api
-Route::post("/signupWithGoogle", [UserController::class, 'RegisterByGoogle']);
+Route::post("signupWithGoogle", [UserController::class, 'RegisterByGoogle']);
+
+Route::get('email/resend',[ VerificationController::class, 'resend'])->name('verification.resend');
+
+Route::get('email/verify/{id}/{hash}',[ VerificationController::class, 'verify'])->name('verification.verify');
 
 
 //products

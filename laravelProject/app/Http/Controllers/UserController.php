@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use Laravel\Sanctum\PersonalAccessToken;
+
+// use App\Http\Requests\RegistrationRequest;
 
 class UserController extends Controller
 {
@@ -37,7 +40,7 @@ class UserController extends Controller
             'email' => request()->email,
             // 'remember_token' => request()->idToken,
         ]);
-        
+
          return (['token' => $user->createToken($request->email)->plainTextToken,'name' =>$user->name,'role' => $user->role,"UserId"=>$user->id]);
 
 
@@ -46,6 +49,10 @@ class UserController extends Controller
 
     //login
     public function login(Request $request){
+
+        // $personalAccessToken = PersonalAccessToken::findToken($request->token);
+        // $user = $personalAccessToken->tokenable;
+        // auth()->login($user);
 
         $request->validate([
             'email' => 'required|email',
