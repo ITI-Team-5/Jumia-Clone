@@ -37,10 +37,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/verified-only', function(Request $request){
+// Route::get('/verified-only', function(Request $request){
 
-  dd('your are verified', $request->user()->name);
-})->middleware('auth:sanctum','verified');
+//   dd('your are verified', $request->user()->name);
+// })->middleware('auth:sanctum','verified');
 
 
 //orders
@@ -63,10 +63,9 @@ Route::post('/sanctum/token', [UserController::class,'login']);
 // google api
 Route::post("signupWithGoogle", [UserController::class, 'RegisterByGoogle']);
 
+// email Verification
 Route::get('email/resend',[ VerificationController::class, 'resend'])->name('verification.resend');
-
 Route::get('email/verify/{id}/{hash}',[ VerificationController::class, 'verify'])->name('verification.verify');
-
 
 //products
 Route::get("products",[ProductController::class,'index']);

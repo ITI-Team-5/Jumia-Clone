@@ -16,11 +16,19 @@ use Laravel\Sanctum\PersonalAccessToken;
 
 class UserController extends Controller
 {
+    // protected function verifiedForFront(Request $request)
+    // {
+    //     //
+    //     $user = User::find($request->id);
+    //     $verified = $user->email_verified_at;
+    //     return $verified;
+    // }
+
     public function registerNewUser(StoreUserRequest  $request)
     {
 
           $request->validated();
-        $newUser = User::create([
+          $user = User::create([
             'name' => request()->name,
             'email' => request()->email,
             'password' => Hash::make($request->password),
@@ -28,8 +36,13 @@ class UserController extends Controller
             'address' =>  request()->address,
             'accept' => request()->accept,
             'role' => 'user',
+            
         ]);
-        return $newUser;
+        $mytoken =$user->createToken($request->email)->plainTextToken;
+        $user->remember_token=$mytoken;
+        $user->save();
+        return (['token' => $mytoken,'name' =>$user->name,'role' => $user->role,"UserId"=>$user->id]);
+
 
     }
     public function RegisterByGoogle(Request  $request)
@@ -40,8 +53,13 @@ class UserController extends Controller
             'email' => request()->email,
             // 'remember_token' => request()->idToken,
         ]);
-
-         return (['token' => $user->createToken($request->email)->plainTextToken,'name' =>$user->name,'role' => $user->role,"UserId"=>$user->id]);
+        $mytoken =$user->createToken($request->email)->plainTextToken;
+        $user->remember_token=$mytoken;
+        $user->save();
+        // $user = User::UpdateOrCreate([           
+        //     'remember_token' => $mytoken,
+        // ]);
+         return (['token' => $mytoken,'name' =>$user->name,'role' => $user->role,"UserId"=>$user->id]);
 
 
     }

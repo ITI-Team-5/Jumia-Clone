@@ -2,6 +2,8 @@
    <div class="spinner-border text-success" style="font-size:20px;top:50%;position:absolute;left:45%"></div>
  </ng-template>
  <section class="container-fluid" *ngIf="profile;else FalseBlock">
+   <button class="btn btn-info"(click)="SendVerificarionEmail()" *ngIf="!isVerified">Verify your Email</button><br>
+<p *ngIf="isVerified" class="text-success">Great! Your Email is Verified</p>
 <table class="mb-5 mt-5 table table-bordered table-hover table-striped text-center">
    <thead>
       <tr>
