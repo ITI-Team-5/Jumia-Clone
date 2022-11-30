@@ -24,6 +24,7 @@ import { DiscountsComponent } from './Components/User/discounts/discounts.compon
 import { CategoriesDetailsComponent } from './Components/User/categories-details/categories-details.component';
 import { SearchProductComponent } from './Components/User/search-product/search-product.component';
 import { CategoryDetailComponent } from './Components/Admin/category-detail/category-detail.component';
+import { PassworResetComponent } from './userComponents/passwor-reset/passwor-reset.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,10 @@ const routes: Routes = [
   {
     path: "login",
     component:LoginComponent,
+  },
+  {
+    path: "passwordreset",
+    component:PassworResetComponent,
   },
   {
     path: "signup",

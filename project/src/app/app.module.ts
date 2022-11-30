@@ -48,7 +48,6 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CategoryDetailComponent } from './Components/Admin/category-detail/category-detail.component';
 import { AdminCategoriesComponent } from './Components/Admin/admin-categories/admin-categories.component';
-
 import {
   SocialLoginModule,
   SocialAuthServiceConfig,
@@ -56,6 +55,8 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from '@abacritt/angularx-social-login';
+import { PassworResetComponent } from './userComponents/passwor-reset/passwor-reset.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -98,6 +99,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         SearchProductComponent,
         CategoryDetailComponent,
         AdminCategoriesComponent,
+        PassworResetComponent,
     
     
     
