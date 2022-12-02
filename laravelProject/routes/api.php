@@ -16,9 +16,10 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController as AuthVerificationController;
 // use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\passwords\CodeCheckController;
-use App\Http\Controllers\passwords\ForgotPasswordController;
+// use App\Http\Controllers\passwords\ForgotPasswordController;
 use App\Http\Controllers\VerificationController;
-
+use App\Http\Controllers\ForgotPasswordController;
+use Illuminate\Support\Facades\Password;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -66,6 +67,12 @@ Route::post("signupWithGoogle", [UserController::class, 'RegisterByGoogle']);
 // email Verification
 Route::get('email/resend',[ VerificationController::class, 'resend'])->name('verification.resend');
 Route::get('email/verify/{id}/{hash}',[ VerificationController::class, 'verify'])->name('verification.verify');
+
+// reset password
+Route::post('/password/email', [ForgotPasswordController::class,'sendResetLinkEmail' ]);
+Route::post('/password/reset', [ResetPasswordController::class ,'reset']);
+
+
 
 //products
 Route::get("products",[ProductController::class,'index']);

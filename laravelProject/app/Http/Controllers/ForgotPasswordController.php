@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Laravel\Sanctum\PersonalAccessToken;
+
 
 class ForgotPasswordController extends Controller
 {
@@ -20,8 +24,18 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function __construct()
+
+    protected function sendResetLinkResponse(Request $request, $response)
     {
-        $this->middleware('guest');
+        return response(['message'=> 'email send successfully ']);
+
     }
+
+
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        return response(['error'=> 'an error sending email '], 422);
+
+    }
+
 }

@@ -57,6 +57,7 @@ import {
   FacebookLoginProvider
 } from '@abacritt/angularx-social-login';
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -98,6 +99,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         SearchProductComponent,
         CategoryDetailComponent,
         AdminCategoriesComponent,
+  
     
     
     

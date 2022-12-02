@@ -25,6 +25,7 @@ import { CategoriesDetailsComponent } from './Components/User/categories-details
 import { SearchProductComponent } from './Components/User/search-product/search-product.component';
 import { CategoryDetailComponent } from './Components/Admin/category-detail/category-detail.component';
 
+
 const routes: Routes = [
   {
     path:"",
@@ -123,6 +124,7 @@ const routes: Routes = [
       component:ContactComponent,
       canActivate:[UserGuard]
     },
+   
     {
       path:"profiles/edit/:id",
       component:EditProfileComponent,
