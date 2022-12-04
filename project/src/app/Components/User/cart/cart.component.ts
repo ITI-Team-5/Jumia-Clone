@@ -119,8 +119,7 @@ export class CartComponent implements OnInit {
       {
         
         user_id:localStorage.getItem('UserId'),
-      
-         order:order,
+        order:order,
         finaltotal:this.total
       }
       
