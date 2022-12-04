@@ -30,6 +30,7 @@
     "angular-datatables": "^13.1.0",
     "angular-dropdown-menu": "^0.3.0",
     "bootstrap": "^5.2.2",
+    "creditcardpayments": "^1.0.3",
     "datatables.net": "^1.12.1",
     "datatables.net-dt": "^1.12.1",
     "font-awesome": "^4.7.0",

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { Router } from '@angular/router';
 import { ServicesService } from '../../Admin/Services/services.service';
-
+import {render} from 'creditcardpayments/creditCardPayments' ;
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -21,6 +21,8 @@ export class CartComponent implements OnInit {
     this.myservice.cartSubject.subscribe((data)=>{
       this.cartItem = data;
     })
+   
+    
    }
 
   ngOnInit(): void {
@@ -32,7 +34,45 @@ export class CartComponent implements OnInit {
     if(!this.cartItem ){
       this.cartItem = 0;
     }
+    render({
+      id:"#myPaypalButtons",
+      currency: "EGP",
+      value :this.total,
+      onApprove:(details)=>{
+        if(this.total==0)
+        {
+          alert('Cart Is Empty')
+        }
+        else{
+          let order = this.productsInCart.map(item=>{
+            return {productId:item.id,quantity:item.quanity,totalPrice:item.price*item.quanity}
+          })
+      
+          let finalData=
+          {
+            
+            user_id:localStorage.getItem('UserId'),
+          
+             order:order,
+            finaltotal:this.total
+          }
+          
+            this.myservice.insertOrder(finalData).subscribe(
+              (data:any)=>{
+                
+                //  console.log('hello data  '+data)
+                  localStorage.removeItem('cart');
+                  window.location.href="/checkout";
+                  
+              }
+             );
     
+        }
+       
+        
+      }
+      
+    })
   }
 
   listItemstocart()
