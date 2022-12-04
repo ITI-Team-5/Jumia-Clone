@@ -29,11 +29,22 @@ private profile  = "http://localhost:8000/api/profiles"
 private discount = "http://localhost:8000/api/products/discounts"
 private cat = "http://localhost:8000/api/categories"
 private search = "http://localhost:8000/api/searches"
+private resend = "http://localhost:8000/api/email/resend"
+
+
+resendVerify(){
+  let token =localStorage.getItem('token');
+
+  const headers=new HttpHeaders({
+    'Content-Type':'application/json',
+    'Authorization':`Bearer ${token}`,
+    });
+
+   return this.myClient.get(this.resend,{headers:headers});
+}
+
  
-
-
-
-
+///////////
 getDiscounts(){
   return this.myClient.get(this.discount);
 }

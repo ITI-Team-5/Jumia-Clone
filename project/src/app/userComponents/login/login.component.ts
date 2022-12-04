@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   user: SocialUser;
   loggedIn: boolean;
  
+  token:any
   constructor(private router:Router , public myService: ServicesService ,
      public fb:FormBuilder, private _myActivate : ActivatedRoute,
       private socialAuthService: SocialAuthService  
@@ -39,12 +40,50 @@ export class LoginComponent implements OnInit {
   login : FormGroup|any;
 
   ngOnInit(): void {
+    
     // this.socialAuthService.signOut()
     // FB
-    this.socialAuthService.authState.subscribe((user) => {
+    // this.socialAuthService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.loggedIn = (user != null);
+    //   this.myService.googleSignup(this.user).subscribe(
+    //     {
+    //       next(data){
+    //       console.log(data);
+    //       localStorage.setItem('token',data['token']);  
+    //       localStorage.setItem('name', data['name']);
+    //       localStorage.setItem('role', data['role']);
+    //       localStorage.setItem('UserId', data['UserId']);
+    //        window.location.href= "/"
+    //   }
+    // });
+     
+     
+    // });
+    this.startlogingoogle();
+   
+    this.login= new FormGroup({
+      "email": new FormControl( '',[Validators.required, Validators.email]),
+      "password": new FormControl('', [Validators.required])
+    })
+    if(localStorage.getItem('token')){
+      
+      console.log('we are here!')
+    
+       this.router.navigate(['/']);
+    }
+   
+  } // end of nginit
+
+  startlogingoogle()
+  {
+    this.socialAuthService.authState.subscribe((user) => 
+    {
+      //google subscribe
       this.user = user;
       this.loggedIn = (user != null);
       this.myService.googleSignup(this.user).subscribe(
+        /// myserv for google api subscribe
         {
           next(data){
           console.log(data);
@@ -52,21 +91,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('name', data['name']);
           localStorage.setItem('role','user');
           localStorage.setItem('UserId', data['UserId']);
+          this.token=localStorage.getItem('token'); 
+            
            window.location.href= "/"
       }
+     
+      
     });
      
-     
     });
-
-    this.login= new FormGroup({
-      "email": new FormControl( '',[Validators.required, Validators.email]),
-      "password": new FormControl('', [Validators.required])
-    })
-    if(localStorage.getItem('token')){
-      this.router.navigate(['/']);
-    }
-   
   }
 
   // google &FB
